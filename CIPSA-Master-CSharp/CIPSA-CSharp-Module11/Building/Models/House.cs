@@ -5,6 +5,10 @@
         public int Bedroom { get; set; }
         public int Bathroom { get; set; }
 
+        public House()
+        {
+                
+        }
         public House(int floor, int room, int area, int bedroom, int bathroom)
         {
             Floor = floor;

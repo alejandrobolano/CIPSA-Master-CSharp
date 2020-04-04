@@ -4,6 +4,11 @@
     {
         public int Extinguisher { get; set; }
         public int Phone { get; set; }
+
+        public Office()
+        {
+                
+        }
         public Office(int floor, int room, int area, int extinguisher, int phone)
         {
             Floor = floor;
