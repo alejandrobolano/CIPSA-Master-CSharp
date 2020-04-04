@@ -1,15 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace CIPSA_CSharp_Module11Console.Extensions
+namespace CIPSA_CSharp_Module11.Extensions
 {
-    public static class ExerciseTypeExtension
+    public static class EnumExtension
     {
         /// <summary>
         /// Returns a custom description, declared through DescriptionAttribute in Enum
         /// </summary>
         /// <returns>Returns a string that is equivalent to a custom description that was declared in Enum</returns>
-        public static string GetDescription(this ExerciseTypeEnum enumerationValue)
+        public static string GetDescription(this Enum enumerationValue)
         {
             var type = enumerationValue.GetType();
             if (!type.IsEnum)

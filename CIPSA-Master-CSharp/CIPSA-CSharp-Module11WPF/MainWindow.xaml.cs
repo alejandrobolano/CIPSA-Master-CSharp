@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CIPSA_CSharp_Module11.Building.Models;
+using CIPSA_CSharp_Module11.Extensions;
 
 namespace CIPSA_CSharp_Module11WPF
 {
@@ -23,8 +24,10 @@ namespace CIPSA_CSharp_Module11WPF
         public MainWindow()
         {
             InitializeComponent();
+            InitializeComboBox();
         }
 
+        #region Modulo 11 - Herencia - Ejercicio 1
 
         private void AddObjectsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +54,35 @@ namespace CIPSA_CSharp_Module11WPF
             ContentTextBlock.Text = string.Empty;
             ShowObjectsButton.IsEnabled = false;
             MessageBox.Show("Se han destruido los objetos");
+        }
+
+        #endregion
+
+        #region Modulo 11 - Interfaces - Ejercicio 3
+
+        private void InitializeComboBox()
+        {
+            var shapeSource = new[]
+            {
+                ShapeEnum.Circle.GetDescription(),
+                ShapeEnum.Triangle.GetDescription(),
+                ShapeEnum.Square.GetDescription()
+            };
+            SelectShapeComboBox.ItemsSource = shapeSource;
+            var calculateSource = new[]
+            {
+                CalculateEnum.Area.GetDescription(),
+                CalculateEnum.Perimeter.GetDescription()
+            };
+            CalculateComboBox.ItemsSource = calculateSource;
+        }
+
+
+        #endregion
+
+        private void CalculateButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

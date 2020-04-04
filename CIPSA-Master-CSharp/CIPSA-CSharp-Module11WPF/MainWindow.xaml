@@ -5,12 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CIPSA_CSharp_Module11WPF"
         mc:Ignorable="d"
-        Title="Ejercicio 1" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="273" Width="413.667">
-    <Grid Margin="0,0,-5.333,-0.333" HorizontalAlignment="Left" Width="422">
-        <Button Content="Crear Objetos" Name="AddObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,16,0,0" Click="AddObjectsButton_Click"/>
-        <Button Content="Mostrar Contenido" IsEnabled="False" Name="ShowObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,52,0,0" Click="ShowObjectsButton_Click"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Name="ContentTextBlock" VerticalAlignment="Top" Margin="10,87,0,0" Height="104" Width="387"/>
-        <Button Content="Destruir objetos" Name="DestroyObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Margin="195,206,0,0" Click="DestroyObjectsButton_Click"/>
+        Title="Ejercicio 1" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="335" Width="413.667">
+    <Grid Margin="0,0,-5.333,2.667" HorizontalAlignment="Left" Width="414">
+        <TabControl Margin="0,0,10,-68">
+            <TabItem Header="Herencia - Ejercicio 1">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-1,24.333">
+                    <Button Content="Crear Objetos" Name="AddObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,16,0,0" Click="AddObjectsButton_Click"/>
+                    <Button Content="Mostrar Contenido" IsEnabled="False" Name="ShowObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,52,0,0" Click="ShowObjectsButton_Click"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Name="ContentTextBlock" VerticalAlignment="Top" Margin="10,87,0,0" Height="143" Width="387"/>
+                    <Button Content="Destruir objetos" Name="DestroyObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Margin="195,245,0,0" Click="DestroyObjectsButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Interfaces - Ejercicio 3">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Triángulo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,42,0,0"/>
+                    <Label Content="Cuadrado" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0"/>
+                    <Label Content="Círculo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,81,0,0"/>
+                    <TextBox Name="SideSquareTextBox" HorizontalAlignment="Left" Height="26" Margin="83,12,0,0" TextWrapping="Wrap" Text="Lado" VerticalAlignment="Top" Width="38" />
+                    <TextBox Name="SideATriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="83,43,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="38" />
+                    <TextBox Name="SideBTriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="135,43,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="38" />
+                    <TextBox Name="SideCTriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="190,42,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="38" />
+                    <TextBox Name="HighBaseATriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="244,42,0,0" TextWrapping="Wrap" Text="Ha" VerticalAlignment="Top" Width="38" />
+                    <TextBox Name="RadiusTextBox" HorizontalAlignment="Left" Height="26" Margin="83,81,0,0" TextWrapping="Wrap" Text="Radio" VerticalAlignment="Top" Width="38" />
+                    <Label Content="Selecciona figura" HorizontalAlignment="Left" Height="31" Margin="10,122,0,0" VerticalAlignment="Top" Width="100"/>
+                    <ComboBox Name="SelectShapeComboBox" HorizontalAlignment="Left" Height="26" Margin="115,122,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Label Content="Para calcular" HorizontalAlignment="Left" Height="25" Margin="207,124,0,0" VerticalAlignment="Top" Width="77"/>
+                    <ComboBox Name="CalculateComboBox" HorizontalAlignment="Left" Height="26" Margin="301,123,0,0" VerticalAlignment="Top" Width="87"/>
+                    <Button Name="CalculateButton" Content="Calcular" HorizontalAlignment="Left" Height="26" Margin="299,164,0,0" VerticalAlignment="Top" Width="89" Click="CalculateButton_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
 
     </Grid>
 </Window>

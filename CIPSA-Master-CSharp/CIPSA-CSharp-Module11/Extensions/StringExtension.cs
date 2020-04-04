@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CIPSA_CSharp_Module11Console.Extensions
+namespace CIPSA_CSharp_Module11.Extensions
 {
     public static class StringExtension 
     {

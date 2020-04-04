@@ -44,6 +44,12 @@
     <Compile Include="Building\Models\Building.cs" />
     <Compile Include="Building\Models\House.cs" />
     <Compile Include="Building\Models\Office.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Geometrics\Circle.cs" />
+    <Compile Include="Geometrics\GeometricShape.cs" />
+    <Compile Include="Geometrics\Square.cs" />
+    <Compile Include="Geometrics\Triangle.cs" />
     <Compile Include="LivingOrganism\Models\Animal.cs" />
     <Compile Include="LivingOrganism\Models\Cat.cs" />
     <Compile Include="LivingOrganism\Models\Dog.cs" />

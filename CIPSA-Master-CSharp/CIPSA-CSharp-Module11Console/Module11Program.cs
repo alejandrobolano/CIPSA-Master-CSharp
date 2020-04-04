@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using CIPSA_CSharp_Module11.Building.Models;
+using CIPSA_CSharp_Module11.Extensions;
 using CIPSA_CSharp_Module11.LivingOrganism.Models;
 using CIPSA_CSharp_Module11.School.Models;
-using CIPSA_CSharp_Module11Console.Extensions;
 using Colorful;
 using Console = Colorful.Console;
 

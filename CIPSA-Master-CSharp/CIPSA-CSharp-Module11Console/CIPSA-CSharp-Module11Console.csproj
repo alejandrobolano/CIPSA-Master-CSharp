@@ -48,10 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExerciseTypeEnum.cs" />
-    <Compile Include="Extensions\ExerciseTypeExtension.cs" />
     <Compile Include="Module11Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\StringExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
