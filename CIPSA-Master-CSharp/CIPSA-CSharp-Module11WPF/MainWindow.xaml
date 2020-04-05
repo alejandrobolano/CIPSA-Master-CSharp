@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Ejercicio 1" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="335" Width="413.667">
     <Grid Margin="0,0,-5.333,2.667" HorizontalAlignment="Left" Width="414">
-        <TabControl Margin="0,0,10,-68">
+        <TabControl Name="TabControl" Margin="0,0,10,-68">
             <TabItem Header="Herencia - Ejercicio 1">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-1,24.333">
                     <Button Content="Crear Objetos" Name="AddObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,16,0,0" Click="AddObjectsButton_Click"/>

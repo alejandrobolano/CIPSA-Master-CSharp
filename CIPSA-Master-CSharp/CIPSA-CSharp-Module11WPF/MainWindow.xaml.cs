@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CIPSA_CSharp_Module11.Building.Models;
 using CIPSA_CSharp_Module11.Extensions;
+using CIPSA_CSharp_Module9WPF;
 
 namespace CIPSA_CSharp_Module11WPF
 {
@@ -84,5 +85,34 @@ namespace CIPSA_CSharp_Module11WPF
         {
 
         }
+
+        #region Common
+        //private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        //{
+        //    e.Handled = Utils.HasNotNumberValidation(e.Text);
+        //}
+        //private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
+        //{
+        //    e.Handled = Utils.HasNotTextValidation(e.Text);
+        //}
+        //private void LoadGrid(DataGrid grid)
+        //{
+        //    if (((TabItem)SchoolTabControl.SelectedItem).Header.ToString().Equals(Utils.STUDENTTAB_HEADER))
+        //    {
+        //        grid.ItemsSource = _studentXmlFile.GetAll();
+        //    }
+        //    if (((TabItem)SchoolTabControl.SelectedItem).Header.ToString().Equals(Utils.SUBJECTTAB_HEADER))
+        //    {
+        //        grid.ItemsSource = _subjectXmlFile.GetAll();
+        //    }
+
+        //}
+        //private void UpdateDataGridAndClearFields(DataGrid dataGridToLoad, Grid gridToClear)
+        //{
+        //    LoadGrid(dataGridToLoad);
+        //    Utils.ClearFields(gridToClear);
+        //}
+
+        #endregion
     }
 }

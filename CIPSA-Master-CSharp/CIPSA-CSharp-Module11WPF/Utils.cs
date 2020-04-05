@@ -9,8 +9,9 @@ using System.Windows.Controls;
 namespace CIPSA_CSharp_Module9WPF
 {
    public class Utils
-    {
-
+   {
+       public static string InheritanceName_TabControl = "Herencia - Ejercicio 1";
+       public static string InterfacesName_TabControl = "Interfaces - Ejercicio 3";
         public static void ShowMessageByEmptyFields()
         {
             MessageBox.Show("Faltan campos por rellenar", "Información");
