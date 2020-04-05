@@ -60,10 +60,6 @@
       <Project>{23eec575-9638-4a13-bd11-c69411a14054}</Project>
       <Name>CIPSA-CSharp-Module11</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CIPSA-CSharp-Module7Console\CIPSA-CSharp-Module7Console.csproj">
-      <Project>{D8BE786D-FC07-4153-87C5-56C816A487A0}</Project>
-      <Name>CIPSA-CSharp-Module7Console</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
