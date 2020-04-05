@@ -8,19 +8,22 @@ namespace CIPSA_CSharp_Module11.Geometrics
 {
     public class Square : GeometricShape
     {
+        public decimal Side { get; set; }
         public override decimal CalculatePerimeter()
         {
-            return 2 * Side;
+            var result = 2 * Side;
+            return decimal.Round(result,2);
         }
 
         public override decimal CalculateArea()
         {
-            return Convert.ToDecimal(Math.Pow(Side, 2));
+            var result = Convert.ToDecimal(Math.Pow(Convert.ToDouble(Side), 2));
+            return decimal.Round(result, 2);
         }
 
-        public override void Draw()
+        public override string Draw()
         {
-            throw new NotImplementedException();
+            return base.Draw() + "El cuadrado";
         }
     }
 }

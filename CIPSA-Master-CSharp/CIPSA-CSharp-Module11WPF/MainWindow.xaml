@@ -8,7 +8,7 @@
         Title="Ejercicio 1" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="335" Width="413.667">
     <Grid Margin="0,0,-5.333,2.667" HorizontalAlignment="Left" Width="414">
         <TabControl Name="TabControl" Margin="0,0,10,-68">
-            <TabItem Header="Herencia - Ejercicio 1">
+            <TabItem Name="InheritanceTabItem" Header="Herencia - Ejercicio 1">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-1,24.333">
                     <Button Content="Crear Objetos" Name="AddObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,16,0,0" Click="AddObjectsButton_Click"/>
                     <Button Content="Mostrar Contenido" IsEnabled="False" Name="ShowObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="378" Margin="10,52,0,0" Click="ShowObjectsButton_Click"/>
@@ -16,22 +16,35 @@
                     <Button Content="Destruir objetos" Name="DestroyObjectsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Margin="195,245,0,0" Click="DestroyObjectsButton_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Interfaces - Ejercicio 3">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="Triángulo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,42,0,0"/>
+            <TabItem Name="InterfacesTabItem" Header="Interfaces - Ejercicio 3">
+                <Grid Background="#FFE5E5E5" Name="InterfacesGrid" Loaded="InterfacesDataGrid_OnLoaded">
+                    <Label Content="Triángulo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0"/>
                     <Label Content="Cuadrado" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0"/>
-                    <Label Content="Círculo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,81,0,0"/>
-                    <TextBox Name="SideSquareTextBox" HorizontalAlignment="Left" Height="26" Margin="83,12,0,0" TextWrapping="Wrap" Text="Lado" VerticalAlignment="Top" Width="38" />
-                    <TextBox Name="SideATriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="83,43,0,0" TextWrapping="Wrap" Text="A" VerticalAlignment="Top" Width="38" />
-                    <TextBox Name="SideBTriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="135,43,0,0" TextWrapping="Wrap" Text="B" VerticalAlignment="Top" Width="38" />
-                    <TextBox Name="SideCTriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="190,42,0,0" TextWrapping="Wrap" Text="C" VerticalAlignment="Top" Width="38" />
-                    <TextBox Name="HighBaseATriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="244,42,0,0" TextWrapping="Wrap" Text="Ha" VerticalAlignment="Top" Width="38" />
-                    <TextBox Name="RadiusTextBox" HorizontalAlignment="Left" Height="26" Margin="83,81,0,0" TextWrapping="Wrap" Text="Radio" VerticalAlignment="Top" Width="38" />
-                    <Label Content="Selecciona figura" HorizontalAlignment="Left" Height="31" Margin="10,122,0,0" VerticalAlignment="Top" Width="100"/>
-                    <ComboBox Name="SelectShapeComboBox" HorizontalAlignment="Left" Height="26" Margin="115,122,0,0" VerticalAlignment="Top" Width="87"/>
-                    <Label Content="Para calcular" HorizontalAlignment="Left" Height="25" Margin="207,124,0,0" VerticalAlignment="Top" Width="77"/>
-                    <ComboBox Name="CalculateComboBox" HorizontalAlignment="Left" Height="26" Margin="301,123,0,0" VerticalAlignment="Top" Width="87"/>
-                    <Button Name="CalculateButton" Content="Calcular" HorizontalAlignment="Left" Height="26" Margin="299,164,0,0" VerticalAlignment="Top" Width="89" Click="CalculateButton_Click"/>
+                    <Label Content="Círculo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,123,0,0"/>
+                    <TextBox Name="SideSquareTextBox" HorizontalAlignment="Left" Height="26" Margin="83,12,0,0" IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Name="SideATriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="83,66,0,0"  IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Name="SideBTriangleTextBox" HorizontalAlignment="Left" Height="26" Margin="135,66,0,0" IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Name="SideCTriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="190,65,0,0" IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Name="HighBaseATriangleTextBox"  HorizontalAlignment="Left" Height="26" Margin="244,65,0,0" IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox Name="RadiusTextBox" HorizontalAlignment="Left" Height="26" Margin="83,123,0,0" IsEnabled="False"
+                             TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="38" TextChanged="TextBox_TextChanged" PreviewTextInput="NumberValidationTextBox" />
+                    <Label Content="Selecciona figura" HorizontalAlignment="Left" Height="31" Margin="10,194,0,0" VerticalAlignment="Top" Width="100"/>
+                    <ComboBox Name="SelectShapeComboBox" HorizontalAlignment="Left" Height="26" Margin="115,194,0,0" VerticalAlignment="Top" Width="87" SelectionChanged="ComboBox_SelectionChanged"/>
+                    <Label Content="Para calcular" HorizontalAlignment="Left" Height="25" Margin="207,196,0,0" VerticalAlignment="Top" Width="77"/>
+                    <ComboBox Name="CalculateComboBox" HorizontalAlignment="Left" Height="26" Margin="299,195,0,0" VerticalAlignment="Top" Width="89" IsEnabled="False" SelectionChanged="ComboBox_SelectionChanged"/>
+                    <Button Name="CalculateButton" Content="Calcular" HorizontalAlignment="Left" Height="26" Margin="299,236,0,0" VerticalAlignment="Top" Width="89" Click="CalculateButton_Click" IsEnabled="False"/>
+                    <Label Content="Lado" HorizontalAlignment="Left" Height="23" Margin="82,43,0,0" VerticalAlignment="Top" Width="39" FontSize="8" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label Content="A" HorizontalAlignment="Left" Height="21" Margin="82,97,0,0" VerticalAlignment="Top" Width="39" FontSize="8" FontStyle="Italic" FontWeight="Bold" RenderTransformOrigin="1.077,0.611"/>
+                    <Label Content="B" HorizontalAlignment="Left" Height="27" Margin="135,97,0,0" VerticalAlignment="Top" Width="39" FontSize="8" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label Content="C" HorizontalAlignment="Left" Height="27" Margin="190,97,0,0" VerticalAlignment="Top" Width="39" FontSize="8" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label Content="Altura Base A" HorizontalAlignment="Left" Height="27" Margin="245,97,0,0" VerticalAlignment="Top" Width="66" FontSize="8" FontStyle="Italic" FontWeight="Bold"/>
+                    <Label Content="Radio" HorizontalAlignment="Left" Height="23" Margin="82,154,0,0" VerticalAlignment="Top" Width="39" FontSize="8" FontStyle="Italic" FontWeight="Bold" RenderTransformOrigin="1.077,0.611"/>
+                    <Button Content="Dibujar" Name="DrawButton" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Width="81" Click="DrawButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

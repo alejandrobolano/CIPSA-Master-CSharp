@@ -8,19 +8,25 @@ namespace CIPSA_CSharp_Module11.Geometrics
 {
     public class Triangle : GeometricShape
     {
+        public decimal SideA { get; set; }
+        public decimal SideB { get; set; }
+        public decimal SideC { get; set; }
+        public decimal HighBaseA { get; set; }
         public override decimal CalculatePerimeter()
         {
-            return A * B * C;
+            var result = SideA + SideB + SideC;
+            return decimal.Round(result, 2);
         }
 
         public override decimal CalculateArea()
         {
-            return A * (Radius / 2);
+            var result = SideA * (HighBaseA / 2);
+            return decimal.Round(result, 2);
         }
 
-        public override void Draw()
+        public override string Draw()
         {
-            throw new NotImplementedException();
+            return base.Draw() + "El triángulo";
         }
     }
 }
