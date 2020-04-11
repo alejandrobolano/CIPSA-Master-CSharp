@@ -8,8 +8,8 @@ namespace CIPSA_CSharp_Module11.Geometrics
 {
     public abstract class GeometricShape
     {
-        public abstract decimal CalculatePerimeter();
-        public abstract decimal CalculateArea();
+        public abstract double CalculatePerimeter();
+        public abstract double CalculateArea();
 
         public abstract object Draw();
     }

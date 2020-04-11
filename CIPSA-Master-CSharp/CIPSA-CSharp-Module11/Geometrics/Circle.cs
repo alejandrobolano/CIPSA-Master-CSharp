@@ -1,31 +1,32 @@
 ﻿using System;
 using System.Windows.Shapes;
+using System.Windows.Media;
 
 namespace CIPSA_CSharp_Module11.Geometrics
 {
     public class Circle : GeometricShape
     {
-        public decimal Radius { get; set; }
-        public override decimal CalculatePerimeter()
+        public double Radius { get; set; }
+        public override double CalculatePerimeter()
         {
-            var result = 2 * Convert.ToDecimal(Math.PI) * Radius;
-            return decimal.Round(result,2);
+            var result = 2 * Math.PI * Radius;
+            return Math.Round(result,2);
         }
 
-        public override decimal CalculateArea()
+        public override double CalculateArea()
         {
-            var result = Convert.ToDecimal(Math.PI * Math.Pow(Convert.ToDouble(Radius), 2));
-            return decimal.Round(result,2);
+            var result = Math.PI * Math.Pow(Radius, 2);
+            return Math.Round(result,2);
         }
 
         public override object Draw()
         {
             var circle = new Ellipse
             {
-                Height = (double) Radius,
-                Width = (double) Radius,
-                Stroke = System.Windows.Media.Brushes.Black,
-                Fill = System.Windows.Media.Brushes.Aqua
+                Height = Radius,
+                Width = Radius,
+                Stroke = Brushes.Black,
+                Fill = Brushes.Aqua
             };
 
 

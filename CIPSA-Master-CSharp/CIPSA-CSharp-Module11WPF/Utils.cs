@@ -48,21 +48,28 @@ namespace CIPSA_CSharp_Module9WPF
             control.ClearValue(Border.BorderBrushProperty);
         }
 
-        public static void ChangeStyleErrorIfIsEnabled(Control control)
+        public static bool HasChangedStyleErrorIfIsEnabled(Control control)
         {
+            var hasChanged = false;
             if (control.IsEnabled)
             {
                 control.Background = Brushes.Beige;
                 control.BorderBrush = Brushes.Red;
+                hasChanged = true;
             }
             else control.IsEnabled = true;
+
+            return hasChanged;
         }
 
         #region Calculates
 
         public static void CalculatesOfCircle(object calculateSelectItem, TextBox box, out Circle circle)
         {
-            circle = new Circle { Radius = Convert.ToDecimal(box.Text) };
+            circle = new Circle
+            {
+                Radius = Convert.ToDouble(box.Text)
+            };
 
             MessageBox.Show(calculateSelectItem.Equals(CalculateEnum.Area.GetDescription())
                 ? "El Área del círculo es: " + Convert.ToString(circle.CalculateArea(), CultureInfo.CurrentCulture)
@@ -71,36 +78,33 @@ namespace CIPSA_CSharp_Module9WPF
 
         public static void CalculatesOfSquare(object calculateSelectItem, TextBox box, out Square square)
         {
-            square = new Square { Side = Convert.ToDecimal(box.Text) };
+            square = new Square
+            {
+                Side = Convert.ToDouble(box.Text)
+            };
             MessageBox.Show(calculateSelectItem.Equals(CalculateEnum.Area.GetDescription())
                 ? "El Área del cuadrado es: " + Convert.ToString(square.CalculateArea(), CultureInfo.CurrentCulture)
                 : "El Perímetro del cuadrado es: " +
                   Convert.ToString(square.CalculatePerimeter(), CultureInfo.CurrentCulture));
         }
 
-        public static void CalculatesOfTriangle(object calculateSelectItem, 
-            TextBox boxA, TextBox boxB, TextBox boxC, TextBox boxHa, out Triangle triangle)
+        public static void CalculatesOfTriangle(object calculateSelectItem,
+            TextBox boxA, TextBox boxB, TextBox boxC, out Triangle triangle)
         {
             var isCalculateArea = calculateSelectItem.Equals(CalculateEnum.Area.GetDescription());
-            var aResult = boxA.Text;
+            triangle = new Triangle
+            {
+                SideA = Convert.ToDouble(boxA.Text),
+                SideB = Convert.ToDouble(boxB.Text),
+                SideC = Convert.ToDouble(boxC.Text)
+            };
             if (isCalculateArea)
             {
-                triangle = new Triangle
-                {
-                    SideA = Convert.ToDecimal(aResult),
-                    HighBaseA = Convert.ToDecimal(boxHa.Text)
-                };
                 MessageBox.Show("El Área del triángulo es: " +
                                 Convert.ToString(triangle.CalculateArea(), CultureInfo.CurrentCulture));
             }
             else
             {
-                triangle = new Triangle
-                {
-                    SideA = Convert.ToDecimal(aResult),
-                    SideB = Convert.ToDecimal(boxB.Text),
-                    SideC = Convert.ToDecimal(boxC.Text)
-                };
                 MessageBox.Show("El Perímetro del triángulo es: " +
                                 Convert.ToString(triangle.CalculatePerimeter(),
                                     CultureInfo.CurrentCulture));

@@ -95,11 +95,11 @@ namespace CIPSA_CSharp_Module11WPF
                 {
                     if (shapeSelectedItem.Equals(ShapeEnum.Circle.GetDescription()))
                     {
-                        Utils.CalculatesOfCircle(calculateSelectItem,RadiusTextBox,out _circle);
+                        Utils.CalculatesOfCircle(calculateSelectItem, RadiusTextBox, out _circle);
                     }
                     else if (shapeSelectedItem.Equals(ShapeEnum.Square.GetDescription()))
                     {
-                        Utils.CalculatesOfSquare(calculateSelectItem,SideSquareTextBox,out _square);
+                        Utils.CalculatesOfSquare(calculateSelectItem, SideSquareTextBox, out _square);
                     }
                     else
                     {
@@ -107,7 +107,6 @@ namespace CIPSA_CSharp_Module11WPF
                             SideATriangleTextBox,
                             SideBTriangleTextBox,
                             SideCTriangleTextBox,
-                            HighBaseATriangleTextBox,
                             out _triangle);
                     }
                 }
@@ -125,7 +124,6 @@ namespace CIPSA_CSharp_Module11WPF
 
             if (!((ComboBox)sender).Name.Equals(SelectShapeComboBox.Name))
             {
-                ValidationFields();
                 DrawButton.IsEnabled = true;
             }
             else
@@ -137,55 +135,68 @@ namespace CIPSA_CSharp_Module11WPF
             if (!((ComboBox)sender).SelectedItem.Equals(Utils.Select) && !CalculateComboBox.SelectedItem.Equals(Utils.Select))
             {
                 CalculateButton.IsEnabled = true;
-                
+
             }
+            ValidationFields();
 
         }
 
         private void ValidationFields()
         {
             var shapeSelected = SelectShapeComboBox.SelectedItem;
-            if (CalculateComboBox.SelectedItem.Equals(Utils.Select)) return;
-            if (shapeSelected.Equals(ShapeEnum.Circle.GetDescription()) && RadiusTextBox.Text.Equals(string.Empty))
+            //if (CalculateComboBox.SelectedItem.Equals(Utils.Select)) return;
+            if (shapeSelected.Equals(ShapeEnum.Circle.GetDescription()) )
             {
-                Utils.ChangeStyleErrorIfIsEnabled(RadiusTextBox);
+                HasChangeStyleErrorInCircle();
             }
-            else if (shapeSelected.Equals(ShapeEnum.Square.GetDescription()) && SideSquareTextBox.Text.Equals(string.Empty))
+            else if (shapeSelected.Equals(ShapeEnum.Square.GetDescription()))
             {
-                Utils.ChangeStyleErrorIfIsEnabled(SideSquareTextBox);
+                HasChangeStyleErrorInSquare();
             }
             else if (shapeSelected.Equals(ShapeEnum.Triangle.GetDescription()))
             {
-                ValidationsTriangle();
+                HasChangeStyleErrorInTriangle();
             }
         }
 
-        private void ValidationsTriangle()
+        private bool HasChangeStyleErrorInCircle()
         {
-            if (CalculateComboBox.SelectedItem.Equals(CalculateEnum.Area.GetDescription()))
+            var hasChanged = false;
+            if (RadiusTextBox.Text.Equals(string.Empty))
             {
-                if (HighBaseATriangleTextBox.Text.Equals(string.Empty))
-                {
-                    Utils.ChangeStyleErrorIfIsEnabled(HighBaseATriangleTextBox);
-                }
-            }
-            else
-            {
-                if (SideBTriangleTextBox.Text.Equals(string.Empty))
-                {
-                    Utils.ChangeStyleErrorIfIsEnabled(SideBTriangleTextBox);
-                }
-
-                if (SideCTriangleTextBox.Text.Equals(string.Empty))
-                {
-                    Utils.ChangeStyleErrorIfIsEnabled(SideCTriangleTextBox);
-                }
+                hasChanged = Utils.HasChangedStyleErrorIfIsEnabled(RadiusTextBox);
             }
 
+            return hasChanged;
+        }
+        private bool HasChangeStyleErrorInSquare()
+        {
+            var hasChanged = false;
+            if (SideSquareTextBox.Text.Equals(string.Empty))
+            {
+                hasChanged = Utils.HasChangedStyleErrorIfIsEnabled(SideSquareTextBox);
+            }
+
+            return hasChanged;
+        }
+        private bool HasChangeStyleErrorInTriangle()
+        {
+            var hasChanged = false;
             if (SideATriangleTextBox.Text.Equals(string.Empty))
             {
-                Utils.ChangeStyleErrorIfIsEnabled(SideATriangleTextBox);
+                hasChanged = Utils.HasChangedStyleErrorIfIsEnabled(SideATriangleTextBox);
             }
+            if (SideBTriangleTextBox.Text.Equals(string.Empty))
+            {
+                hasChanged = Utils.HasChangedStyleErrorIfIsEnabled(SideBTriangleTextBox);
+            }
+
+            if (SideCTriangleTextBox.Text.Equals(string.Empty))
+            {
+                hasChanged = Utils.HasChangedStyleErrorIfIsEnabled(SideCTriangleTextBox);
+            }
+
+            return hasChanged;
         }
 
 
@@ -236,15 +247,35 @@ namespace CIPSA_CSharp_Module11WPF
             var shapeSelected = SelectShapeComboBox.SelectedItem;
             if (shapeSelected.Equals(ShapeEnum.Circle.GetDescription()))
             {
-                _circle = new Circle { Radius = Convert.ToDecimal(RadiusTextBox.Text) };
+                if (HasChangeStyleErrorInCircle()) return;
+                _circle = new Circle
+                {
+                    Radius = Convert.ToDouble(RadiusTextBox.Text)
+                };
                 var circleDraw = (Ellipse)_circle.Draw();
-                InterfacesGrid.Children.Add(circleDraw);
+                var draw = new Draw(circleDraw);
+                draw.Show();
             }
             else if (shapeSelected.Equals(ShapeEnum.Square.GetDescription()))
             {
+                if (HasChangeStyleErrorInSquare()) return;
+                _square = new Square { Side = Convert.ToDouble(SideSquareTextBox.Text) };
+                var squareDraw = (Rectangle)_square.Draw();
+                var draw = new Draw(squareDraw);
+                draw.Show();
             }
             else
             {
+                if (HasChangeStyleErrorInTriangle()) return;
+                _triangle = new Triangle
+                {
+                    SideA = Convert.ToDouble(SideATriangleTextBox.Text),
+                    SideB = Convert.ToDouble(SideBTriangleTextBox.Text),
+                    SideC = Convert.ToDouble(SideCTriangleTextBox.Text)
+                };
+                var triangleDraw = (Polygon)_triangle.Draw();
+                var draw = new Draw(triangleDraw);
+                draw.Show();
             }
 
         }
