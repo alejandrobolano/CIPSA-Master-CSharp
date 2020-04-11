@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace CIPSA_CSharp_Module11.Geometrics
 {
@@ -21,9 +18,18 @@ namespace CIPSA_CSharp_Module11.Geometrics
             return decimal.Round(result,2);
         }
 
-        public override string Draw()
+        public override object Draw()
         {
-            return base.Draw() + "El círculo";
+            var circle = new Ellipse
+            {
+                Height = (double) Radius,
+                Width = (double) Radius,
+                Stroke = System.Windows.Media.Brushes.Black,
+                Fill = System.Windows.Media.Brushes.Aqua
+            };
+
+
+            return circle;
         }
     }
 }

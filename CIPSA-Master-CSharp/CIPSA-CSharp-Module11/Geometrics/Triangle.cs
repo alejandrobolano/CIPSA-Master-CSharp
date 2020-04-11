@@ -24,9 +24,9 @@ namespace CIPSA_CSharp_Module11.Geometrics
             return decimal.Round(result, 2);
         }
 
-        public override string Draw()
+        public override object Draw()
         {
-            return base.Draw() + "El triángulo";
+            throw new NotImplementedException();
         }
     }
 }

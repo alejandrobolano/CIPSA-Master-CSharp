@@ -11,9 +11,6 @@ namespace CIPSA_CSharp_Module11.Geometrics
         public abstract decimal CalculatePerimeter();
         public abstract decimal CalculateArea();
 
-        public virtual string Draw()
-        {
-            return "Se ha dibujado correctamente: ";
-        }
+        public abstract object Draw();
     }
 }

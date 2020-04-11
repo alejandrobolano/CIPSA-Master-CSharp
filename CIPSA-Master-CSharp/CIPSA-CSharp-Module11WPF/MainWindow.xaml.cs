@@ -236,15 +236,15 @@ namespace CIPSA_CSharp_Module11WPF
             var shapeSelected = SelectShapeComboBox.SelectedItem;
             if (shapeSelected.Equals(ShapeEnum.Circle.GetDescription()))
             {
-                MessageBox.Show(_circle.Draw());
+                _circle = new Circle { Radius = Convert.ToDecimal(RadiusTextBox.Text) };
+                var circleDraw = (Ellipse)_circle.Draw();
+                InterfacesGrid.Children.Add(circleDraw);
             }
             else if (shapeSelected.Equals(ShapeEnum.Square.GetDescription()))
             {
-                MessageBox.Show(_square.Draw());
             }
             else
             {
-                MessageBox.Show(_triangle.Draw());
             }
 
         }
