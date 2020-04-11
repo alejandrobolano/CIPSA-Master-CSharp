@@ -62,6 +62,9 @@
     <Compile Include="School\Models\Student.cs" />
     <Compile Include="School\Models\Teacher.cs" />
     <Compile Include="School\Models\Person.cs" />
+    <Compile Include="Universe\ISpaceship.cs" />
+    <Compile Include="Universe\TieFighter.cs" />
+    <Compile Include="Universe\XWing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\contessa.flf">

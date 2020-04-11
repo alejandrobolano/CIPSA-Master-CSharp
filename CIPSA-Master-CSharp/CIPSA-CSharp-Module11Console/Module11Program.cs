@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Drawing;
+using CIPSA_CSharp_Common;
 using CIPSA_CSharp_Module11.Building.Models;
 using CIPSA_CSharp_Module11.Extensions;
 using CIPSA_CSharp_Module11.LivingOrganism.Models;
 using CIPSA_CSharp_Module11.School.Models;
+using CIPSA_CSharp_Module11.Universe;
 using Colorful;
 using Console = Colorful.Console;
 
@@ -104,6 +106,78 @@ namespace CIPSA_CSharp_Module11Console
         private static void ExercisesOfInterfaces()
         {
             Init(ExerciseTypeEnum.Interfaces);
+            Exercise1Interface();
+        }
+
+        private static void Exercise1Interface()
+        {
+            var xWing = new XWing();
+            var tieFighter = new TieFighter();
+            ConsoleWriteLine("╔═══════════════════════════════════════════════════════════════════════════════╗", Color.Blue);
+            StateBattleOfSpaceship(xWing);
+            StateBattleOfSpaceship(tieFighter);
+            ConsoleWriteLine("╚═══════════════════════════════════════════════════════════════════════════════╝", Color.Blue);
+            StartBattle(xWing, tieFighter);
+
+        }
+
+        private static void StateBattleOfSpaceship(ISpaceship spaceship)
+        {
+            ConsoleWriteLine($"║Estado de la batalla de {spaceship}: \t\t\t\t\t\t║" +
+                             $"\n║ Vida: {spaceship.Health}" +
+                             $"\t Coordenadas (X,Y): {spaceship.AxisX},{spaceship.AxisY} \t\t\t\t\t║", Color.Blue);
+        }
+
+        private static void StartBattle(ISpaceship xWing, ISpaceship tieFighter)
+        {
+            const string end = "fin";
+            const string stop = "detener";
+            ConsoleWriteLine("Empieza la batalla: ",Color.Aquamarine);
+            Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine($"║  Puede detener el juego escribiendo: {end} o {stop}                          ║");
+            Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════╝");
+            while (true)
+            {
+                Battle(xWing, tieFighter);
+                Battle(tieFighter, xWing);
+                ConsoleWriteLine("Para continuar presione cualquier tecla...", Color.White);
+                var possibleStop = Console.ReadLine();
+                if (possibleStop.ToLower().Equals(end.ToLower()) || possibleStop.ToLower().Equals(stop.ToLower()))
+                {
+                    break;
+                }
+            }
+            Console.WriteLine();
+            ConsoleWriteLine("╔═══════════════════════════════════════════════════════════════════════════════╗", Color.Blue);
+            StateBattleOfSpaceship(xWing);
+            StateBattleOfSpaceship(tieFighter);
+            ConsoleWriteLine("╚═══════════════════════════════════════════════════════════════════════════════╝", Color.Blue);
+        }
+
+        private static void Battle(ISpaceship shooter, ISpaceship enemy)
+        {
+            ConsoleWriteLine($"\nTurno de {shooter}", Color.Aquamarine);
+            var axisX = GetAxis("X");
+            var axisY = GetAxis("Y");
+            shooter.MoveToPosition(axisX, axisY);
+            ConsoleWriteLine($"{shooter} se desplaza a {axisX},{axisY}." +
+                             $"Coordenadas actuales: {shooter.AxisX},{shooter.AxisY}", Color.Aquamarine);
+            enemy.Health -= shooter.Shoot();
+            Console.Beep(800, 500);
+            ConsoleWriteLine($"{shooter} dispara sobre {enemy}." +
+                             $"\tVida de {enemy}: {enemy.Health}", Color.Aquamarine);
+        }
+
+        private static int GetAxis(string axis)
+        {
+            Console.WriteLine($"Diga la coordenada: {axis}");
+            var axisValue = Helper.GetNumeric(Console.ReadLine());
+            if (axisValue == -1)
+            {
+                GetAxis(axis);
+            }
+
+            return axisValue;
         }
 
         #endregion

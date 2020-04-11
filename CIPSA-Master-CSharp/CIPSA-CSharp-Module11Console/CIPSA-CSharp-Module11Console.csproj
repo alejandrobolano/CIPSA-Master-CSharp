@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CIPSA-CSharp-Common\CIPSA-CSharp-Common.csproj">
+      <Project>{D6AC6AD6-2BAE-4F4E-8715-DF9BB99395A0}</Project>
+      <Name>CIPSA-CSharp-Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CIPSA-CSharp-Module11\CIPSA-CSharp-Module11.csproj">
       <Project>{23eec575-9638-4a13-bd11-c69411a14054}</Project>
       <Name>CIPSA-CSharp-Module11</Name>
