@@ -4,7 +4,7 @@ namespace CIPSA_CSharp_Module11.Extensions
 {
     public static class StringExtension 
     {
-        private static readonly char[] Vocals = new char[]{'a','e','i','o','u'};
+        private static readonly char[] Vocals = {'a','e','i','o','u'};
 
         /// <summary>
         /// Returns a new string in which all occurrences of a specified string in the current instance are replaced with another specified string.</summary>

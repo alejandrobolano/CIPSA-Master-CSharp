@@ -8,6 +8,7 @@ using CIPSA_CSharp_Module11.School.Models;
 using CIPSA_CSharp_Module11.Universe;
 using Colorful;
 using Console = Colorful.Console;
+using PersonLivingOrganism = CIPSA_CSharp_Module11.LivingOrganism.Models.Person;
 
 namespace CIPSA_CSharp_Module11Console
 {
@@ -50,9 +51,9 @@ namespace CIPSA_CSharp_Module11Console
                          $"para que pueda ser sustituible nuevamente";
             ConsoleWriteLine(phrase, Color.AntiqueWhite);
             ConsoleWriteLine("Ahora se muestra el cambio:" +
-                             $"\n {phrase.ReplaceExtension(oldValue,newValue)}",Color.AntiqueWhite);
+                             $"\n {phrase.ReplaceExtension(oldValue, newValue)}", Color.AntiqueWhite);
             var quantityVocals = phrase.QuantityVocals();
-            ConsoleWriteLine($"En la anterior frase existen {quantityVocals} vocales",Color.AntiqueWhite);
+            ConsoleWriteLine($"En la anterior frase existen {quantityVocals} vocales", Color.AntiqueWhite);
         }
 
         private static void Exercise4()
@@ -107,6 +108,7 @@ namespace CIPSA_CSharp_Module11Console
         {
             Init(ExerciseTypeEnum.Interfaces);
             Exercise1Interface();
+            Exercise3Interface();
         }
 
         private static void Exercise1Interface()
@@ -132,7 +134,7 @@ namespace CIPSA_CSharp_Module11Console
         {
             const string end = "fin";
             const string stop = "detener";
-            ConsoleWriteLine("Empieza la batalla: ",Color.Aquamarine);
+            ConsoleWriteLine("Empieza la batalla: ", Color.Aquamarine);
             Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════╗");
             Console.WriteLine($"║  Puede detener el juego escribiendo: {end} o {stop}                          ║");
             Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════╝");
@@ -178,6 +180,40 @@ namespace CIPSA_CSharp_Module11Console
             }
 
             return axisValue;
+        }
+
+        private static void Exercise3Interface()
+        {
+            var person1 = new PersonLivingOrganism("Kathy", 28, SexEnum.Female.GetDescription());
+            var person2 = new PersonLivingOrganism("Alejandro", 27, SexEnum.Male.GetDescription());
+            var person3 = new PersonLivingOrganism("Dania", 27, SexEnum.Female.GetDescription());
+            var person4 = new PersonLivingOrganism("Manuel", 25, SexEnum.Male.GetDescription());
+
+            ConsoleWriteLine($"Personas a comparar: " +
+                             $"\n {person1} " +
+                             $"\n {person2} " +
+                             $"\n {person3} " +
+                             $"\n {person4}", Color.Brown);
+
+            ConsoleWriteLine("\n¿Quién es mayor entre: " +
+                             $"\t {person1.Name} y {person2.Name}?" +
+                             $"\n {(person1 > person2).Name}", Color.Brown);
+
+            ConsoleWriteLine("¿Quién es menor entre: " +
+                             $"\t {person3.Name} y {person2.Name}?" +
+                             $"\n {(person3 < person2).Name}", Color.Brown);
+
+            ConsoleWriteLine("\nComparador de sexo: ", Color.Brown);
+            ComparePersonsBySex(person1, person4);
+            ComparePersonsBySex(person3, person1);
+        }
+
+        private static void ComparePersonsBySex(PersonLivingOrganism person1, PersonLivingOrganism person2)
+        {
+            ConsoleWriteLine(
+                person1 == person2
+                    ? $" {person1.Name} tiene el mismo sexo que {person2.Name}"
+                    : $" {person1.Name} y {person2.Name} son de diferentes sexos", Color.Brown);
         }
 
         #endregion

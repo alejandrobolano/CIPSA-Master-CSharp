@@ -57,6 +57,7 @@
     <Compile Include="LivingOrganism\Models\Animal.cs" />
     <Compile Include="LivingOrganism\Models\Cat.cs" />
     <Compile Include="LivingOrganism\Models\Dog.cs" />
+    <Compile Include="LivingOrganism\Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="School\Models\Director.cs" />
     <Compile Include="School\Models\Student.cs" />
