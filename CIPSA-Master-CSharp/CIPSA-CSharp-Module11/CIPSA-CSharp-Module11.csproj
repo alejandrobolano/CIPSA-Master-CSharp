@@ -48,8 +48,19 @@
     <Compile Include="Building\Models\Building.cs" />
     <Compile Include="Building\Models\House.cs" />
     <Compile Include="Building\Models\Office.cs" />
+    <Compile Include="CakeShop\Enums\FlavorEnum.cs" />
+    <Compile Include="CakeShop\Enums\SizeEnum.cs" />
+    <Compile Include="CakeShop\Models\Cake.cs" />
+    <Compile Include="CakeShop\Models\CakeCommon.cs" />
+    <Compile Include="CakeShop\Models\Cupcakes.cs" />
+    <Compile Include="CakeShop\Models\Donut.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Extra\Enum\WorkShiftEnum.cs" />
+    <Compile Include="Extra\Models\Employer.cs" />
+    <Compile Include="Extra\Models\Person.cs" />
+    <Compile Include="Extra\Enum\AccreditationEnum.cs" />
+    <Compile Include="Extra\Enum\SexEnum.cs" />
     <Compile Include="Geometrics\Circle.cs" />
     <Compile Include="Geometrics\GeometricShape.cs" />
     <Compile Include="Geometrics\Square.cs" />
@@ -62,7 +73,7 @@
     <Compile Include="School\Models\Director.cs" />
     <Compile Include="School\Models\Student.cs" />
     <Compile Include="School\Models\Teacher.cs" />
-    <Compile Include="School\Models\Person.cs" />
+    <Compile Include="Common\Models\Person.cs" />
     <Compile Include="Universe\ISpaceship.cs" />
     <Compile Include="Universe\TieFighter.cs" />
     <Compile Include="Universe\XWing.cs" />
@@ -78,5 +89,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

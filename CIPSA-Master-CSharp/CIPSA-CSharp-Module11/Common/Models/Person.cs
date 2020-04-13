@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CIPSA_CSharp_Module11.School.Models
+﻿namespace CIPSA_CSharp_Module11.Common.Models
 {
     public class Person
     {
         public string Name { get; set; }
         public string LastName { get; set; }
 
-        public virtual string GetInfo()
+        public virtual string GetBasicInfo()
         {
             return "Nombre: " + Name +
                    "\n Apellidos: " + LastName;

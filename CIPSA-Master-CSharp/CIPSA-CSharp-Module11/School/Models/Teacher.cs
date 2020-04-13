@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIPSA_CSharp_Module11.Common.Models;
 
 namespace CIPSA_CSharp_Module11.School.Models
 {
@@ -19,10 +20,10 @@ namespace CIPSA_CSharp_Module11.School.Models
             IsTutor = isTutor;
         }
 
-        public override string GetInfo()
+        public override string GetBasicInfo()
         {
             var tutor = IsTutor ? "El profesor es tutor" : "El profesor no es tutor";
-            return base.GetInfo() +
+            return base.GetBasicInfo() +
                    "\n Aula asignada: " + ClassroomAssigned +
                    "\n " + tutor;
         }

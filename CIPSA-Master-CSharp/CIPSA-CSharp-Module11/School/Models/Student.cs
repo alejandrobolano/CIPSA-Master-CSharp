@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIPSA_CSharp_Module11.Common.Models;
 
 namespace CIPSA_CSharp_Module11.School.Models
 {
@@ -22,9 +23,9 @@ namespace CIPSA_CSharp_Module11.School.Models
             English = english;
         }
 
-        public override string GetInfo()
+        public override string GetBasicInfo()
         {
-            return base.GetInfo() +
+            return base.GetBasicInfo() +
                    "\n Nota de matemática: " + Mathematics +
                    "\n Nota de lengua: " + Spanish +
                    "\n Nota de inglés: " + English;

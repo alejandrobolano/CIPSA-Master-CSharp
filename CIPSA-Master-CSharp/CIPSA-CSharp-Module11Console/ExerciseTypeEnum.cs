@@ -9,7 +9,7 @@ namespace CIPSA_CSharp_Module11Console
         Inheritance,
         [Description("Interfaces")]
         Interfaces,
-        [Description("Estructuras y Enumerados")]
+        [Description("Estructuras")]
         Structures
 
     }

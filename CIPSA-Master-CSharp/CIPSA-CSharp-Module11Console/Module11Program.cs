@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using CIPSA_CSharp_Common;
 using CIPSA_CSharp_Module11.Building.Models;
+using CIPSA_CSharp_Module11.CakeShop.Enums;
+using CIPSA_CSharp_Module11.CakeShop.Models;
 using CIPSA_CSharp_Module11.Extensions;
+using CIPSA_CSharp_Module11.Extra;
+using CIPSA_CSharp_Module11.Extra.Enum;
+using CIPSA_CSharp_Module11.Extra.Models;
 using CIPSA_CSharp_Module11.LivingOrganism.Models;
 using CIPSA_CSharp_Module11.School.Models;
 using CIPSA_CSharp_Module11.Universe;
 using Colorful;
 using Console = Colorful.Console;
 using PersonLivingOrganism = CIPSA_CSharp_Module11.LivingOrganism.Models.Person;
+using PersonExtra = CIPSA_CSharp_Module11.Extra.Models.Person;
 
 namespace CIPSA_CSharp_Module11Console
 {
@@ -19,6 +26,8 @@ namespace CIPSA_CSharp_Module11Console
             ExercisesOfInheritance();
             Continue();
             ExercisesOfInterfaces();
+            Continue();
+            ExercisesOfStructures();
         }
 
         private static void Init(ExerciseTypeEnum typeEnum)
@@ -62,11 +71,11 @@ namespace CIPSA_CSharp_Module11Console
             var student = new Student("Luis", "Lopez Lopez", 6.5M, 7, 9);
             var director = new Director("Alvaro", "Hernandez", 4, "ESPAI");
             ConsoleWriteLine("Información del profesor: " +
-                             $"\n {teacher.GetInfo()}" +
+                             $"\n {teacher.GetBasicInfo()}" +
                              "\n\nInformación del estudiante: " +
-                             $"\n {student.GetInfo()}" +
+                             $"\n {student.GetBasicInfo()}" +
                              "\n\nInformación del director: " +
-                             $"\n {director.GetInfo()}", Color.Brown);
+                             $"\n {director.GetBasicInfo()}", Color.Brown);
         }
 
         private static void Exercise3()
@@ -108,6 +117,7 @@ namespace CIPSA_CSharp_Module11Console
         {
             Init(ExerciseTypeEnum.Interfaces);
             Exercise1Interface();
+            Separator();
             Exercise3Interface();
         }
 
@@ -196,11 +206,11 @@ namespace CIPSA_CSharp_Module11Console
                              $"\n {person4}", Color.Brown);
 
             ConsoleWriteLine("\n¿Quién es mayor entre: " +
-                             $"\t {person1.Name} y {person2.Name}?" +
+                             $"{person1.Name} y {person2.Name}?" +
                              $"\n {(person1 > person2).Name}", Color.Brown);
 
             ConsoleWriteLine("¿Quién es menor entre: " +
-                             $"\t {person3.Name} y {person2.Name}?" +
+                             $"{person3.Name} y {person2.Name}?" +
                              $"\n {(person3 < person2).Name}", Color.Brown);
 
             ConsoleWriteLine("\nComparador de sexo: ", Color.Brown);
@@ -218,6 +228,70 @@ namespace CIPSA_CSharp_Module11Console
 
         #endregion
 
+        #region Exercises of Structures
+
+        private static void ExercisesOfStructures()
+        {
+            Init(ExerciseTypeEnum.Structures);
+            Exercise1Structures();
+            Separator();
+            Exercise2Structures();
+            Separator();
+            Exercise3Structures();
+        }
+
+        private static void Exercise3Structures()
+        {
+            var donut = new Donut(1.5M, FlavorEnum.OrangeJam, true);
+            var cupcake = new Cupcakes(1.25M, FlavorEnum.WhiteChocolate,"Esperanza");
+            var cake = new Cake(2.5M,FlavorEnum.NutAndHoney, SizeEnum.Medium, 5,"Felicitats");
+
+            ConsoleWriteLine("Ejemplo de productos de la pastelería: " +
+                             $"\n {donut}" +
+                             $"\n" +
+                             $"\n {cupcake}" +
+                             $"\n" +
+                             $"\n {cake}", Color.Brown);
+        }
+
+        private static void Exercise2Structures()
+        {
+            var employers = GetEmployers();
+            ConsoleWriteLine("Datos de las personas:",Color.Aquamarine);
+            employers.ForEach(employer => ConsoleWriteLine($" {employer}",Color.Aquamarine));
+        }
+
+        private static List<Employer> GetEmployers()
+        {
+            var randomNumber = new Random();
+            var employers = new List<Employer>
+            {
+                new Employer("Alejandro","Bolaño", WorkShiftEnum.Morning, randomNumber.Next(100,999)),
+                new Employer("Manuel","Bolaño", WorkShiftEnum.Afternoon, randomNumber.Next(100,999)),
+                new Employer("Kathy","Méndez", WorkShiftEnum.Night, randomNumber.Next(100,999)),
+                new Employer("Nerea","Bolaño", WorkShiftEnum.Morning, randomNumber.Next(100,999)),
+                new Employer("Alejandro","Fernandez", WorkShiftEnum.Morning, randomNumber.Next(100,999)),
+                new Employer("Laura","Lopez", WorkShiftEnum.Night, randomNumber.Next(100,999)),
+                new Employer("Ekaitz","Rodriguez", WorkShiftEnum.Morning, randomNumber.Next(100,999)),
+                new Employer("Urgaitz","Fernandez", WorkShiftEnum.Afternoon, randomNumber.Next(100,999)),
+                new Employer("Gonzalo","Alvarez", WorkShiftEnum.Morning, randomNumber.Next(100,999)),
+                new Employer("Ernesto","Bolaño", WorkShiftEnum.Afternoon, randomNumber.Next(100,999)),
+            };
+            return employers;
+        }
+        private static void Exercise1Structures()
+        {
+            var person1 = new PersonExtra("Alejandro", "Bolaño","alejandro@mailinator.com",
+                666909090,AccreditationEnum.Nie, "Y6822891R",SexEnum.Male);
+            var person2 = new PersonExtra("Katherine", "Méndez","katherine@mailinator.com",
+                666800090,AccreditationEnum.Dni, "20375266A", SexEnum.Female);
+            ConsoleWriteLine("Datos de las personas:" +
+                             $"\n {person1}" +
+                             $"\n {person2}",Color.Blue);
+        }
+
+
+        #endregion
 
         #region Util for console
 
