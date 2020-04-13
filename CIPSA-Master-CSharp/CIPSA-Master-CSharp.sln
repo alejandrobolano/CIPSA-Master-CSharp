@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIPSA-CSharp-Module11WPF", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub", "VideoClub\VideoClub.csproj", "{9B3E79DE-6830-462A-8B6A-41844ADECCCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoClub.Core", "VideoClub.Core\VideoClub.Core.csproj", "{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +207,10 @@ Global
 		{9B3E79DE-6830-462A-8B6A-41844ADECCCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B3E79DE-6830-462A-8B6A-41844ADECCCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B3E79DE-6830-462A-8B6A-41844ADECCCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -255,6 +261,7 @@ Global
 		{23EEC575-9638-4A13-BD11-C69411A14054} = {46D385AD-5F36-48A9-9A83-646068FE1E96}
 		{13911110-8BB6-45C5-BD41-7A16EFFF2002} = {C045AF58-5087-4357-A473-350AFC748C63}
 		{9B3E79DE-6830-462A-8B6A-41844ADECCCB} = {1871EBB0-33BA-4049-9DB0-3C5B6ABCA4B7}
+		{EC51B6F8-4762-4063-A7E5-B3A9FBD1CF3D} = {1871EBB0-33BA-4049-9DB0-3C5B6ABCA4B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C9699EA5-22B5-4E3A-BBE0-EBD6EEF1BCDB}

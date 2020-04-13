@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VideoClub.Common.Enums
+namespace VideoClub.Core.Common.Enums
 {
     public enum AccreditationEnum
     {

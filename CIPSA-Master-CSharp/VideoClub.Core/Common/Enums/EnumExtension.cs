@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace VideoClub.Common.Enums
+namespace VideoClub.Core.Common.Enums
 {
     public static class EnumExtension
     {

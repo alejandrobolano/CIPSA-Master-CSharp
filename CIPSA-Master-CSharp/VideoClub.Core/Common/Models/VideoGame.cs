@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VideoClub.Common.Enums;
+using VideoClub.Core.Common.Enums;
 
-namespace VideoClub.Common.Models
+namespace VideoClub.Core.Common.Models
 {
     public class VideoGame : Product
     {

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using VideoClub.Common.Exceptions;
+using VideoClub.Core.Common.Exceptions;
 
-namespace VideoClub.BusinessLogic.Implementations
+namespace VideoClub.Core.BusinessLogic.Implementations
 {
     public class Validations
     {

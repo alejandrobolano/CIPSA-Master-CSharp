@@ -1,8 +1,7 @@
 ﻿using System;
-using VideoClub.Common.Enums;
 using VideoClub.Common.Exceptions;
 
-namespace VideoClub.Common.Models
+namespace VideoClub.Core.Common.Models
 {
     public class Movie : Product
     {

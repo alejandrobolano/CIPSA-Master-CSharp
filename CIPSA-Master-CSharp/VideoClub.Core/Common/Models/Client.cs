@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using VideoClub.BusinessLogic.Implementations;
-using VideoClub.Common.Enums;
-using VideoClub.Common.Exceptions;
+using VideoClub.Core.BusinessLogic.Implementations;
+using VideoClub.Core.Common.Enums;
 
-namespace VideoClub.Common.Models
+namespace VideoClub.Core.Common.Models
 {
     public class Client
     {
@@ -76,18 +70,9 @@ namespace VideoClub.Common.Models
         public Client()
         {
             var random = new Random();
-            Id = GetVoucherNumber(6,random);
+            Id = ClientService.GetVoucherNumber(6,random);
         }
 
-        public static string GetVoucherNumber(int length, Random random)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var result = new string(
-                Enumerable.Repeat(chars, length)
-                    .Select(s => s[random.Next(s.Length)])
-                    .ToArray());
-
-            return result;
-        }
+       
     }
 }
