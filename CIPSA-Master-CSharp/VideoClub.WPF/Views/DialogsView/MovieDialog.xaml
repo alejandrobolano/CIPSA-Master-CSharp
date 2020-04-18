@@ -1,0 +1,26 @@
+﻿<mah:CustomDialog x:Class="VideoClub.DialogsView.MovieDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoClub.DialogsView"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        mc:Ignorable="d"
+        Title="Movies" Height="172" Width="auto">
+    <DockPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>Hello, world. My name is:</TextBlock>
+            <TextBlock Name="NameTextBlock" Margin="0,10" TextAlignment="Center" FontWeight="Bold">[No name entered]</TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button Name="SaveButton" Click="SaveButton_OnClickButton_Click">Guardar</Button>
+                <Button Name="CancelButton" Click="CancelButton_Click">Cancelar</Button>
+            </StackPanel>
+        </StackPanel>
+
+       
+        
+    </DockPanel>
+</mah:CustomDialog>

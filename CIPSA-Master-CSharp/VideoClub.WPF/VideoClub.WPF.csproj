@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B3E79DE-6830-462A-8B6A-41844ADECCCB}</ProjectGuid>
+    <ProjectGuid>{0D32A5B5-A64F-48DC-805C-A4A0781850EC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VideoClub</RootNamespace>
-    <AssemblyName>VideoClub</AssemblyName>
+    <RootNamespace>VideoClub.WPF</RootNamespace>
+    <AssemblyName>VideoClub.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -108,7 +108,6 @@
       <HintPath>..\packages\MahApps.Metro.IconPacks.3.7.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\System.Windows.Interactivity.dll</HintPath>
@@ -131,11 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DialogsView\MovieDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Views\DialogsView\MovieDialog.xaml.cs">
+      <DependentUpon>MovieDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -143,13 +141,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DialogsView\MovieDialog.xaml.cs">
-      <DependentUpon>MovieDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DialogsView\MovieDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -177,6 +176,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VideoClub.Common.BusinessLogic\VideoClub.Common.BusinessLogic.csproj">
+      <Project>{ec31283e-23f6-422e-a76c-3d8295dad297}</Project>
+      <Name>VideoClub.Common.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VideoClub.Infrastructure.Repository\VideoClub.Infrastructure.Repository.csproj">
+      <Project>{bc2dbfa4-5afd-442a-945b-0fd954c3cdef}</Project>
+      <Name>VideoClub.Infrastructure.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
