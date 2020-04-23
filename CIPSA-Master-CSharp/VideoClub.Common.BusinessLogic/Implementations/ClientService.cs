@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using VideoClub.Common.BusinessLogic.Contracts;
 using VideoClub.Common.Model.Enums;
-using VideoClub.Common.Model.Models;
+using VideoClub.Infrastructure.Repository.Entity;
+using VideoClub.Infrastructure.Repository.Implementations;
 
 namespace VideoClub.Common.BusinessLogic.Implementations
 {
-    public class ClientService : IClientService
+    public class ClientService 
     {
+
         public void UpdateClientsForVip(List<Client> clients)
         {
             clients.ForEach(client =>

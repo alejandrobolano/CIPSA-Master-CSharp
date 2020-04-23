@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using VideoClub.Common.Model.Exceptions;
 using VideoClub.Common.Model.Utils;
 
-namespace VideoClub.Common.Model.Models
+namespace VideoClub.Infrastructure.Repository.Entity
 {
     public class Movie : Product
     {
@@ -15,9 +16,9 @@ namespace VideoClub.Common.Model.Models
         #endregion
 
         #region Public properties
-
+        [Required]
         public TimeSpan Duration { get; set; }
-
+        [Required]
         public int ProductionYear
         {
             get => _productionYear;
@@ -35,7 +36,7 @@ namespace VideoClub.Common.Model.Models
                 _productionYear = value;
             }
         }
-
+        [Required]
         public int BuyYear
         {
             get => _buyYear;

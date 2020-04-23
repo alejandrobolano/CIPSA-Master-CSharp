@@ -1,9 +1,9 @@
 ﻿using VideoClub.Common.BusinessLogic.Contracts;
-using VideoClub.Common.Model.Models;
+using VideoClub.Infrastructure.Repository.Entity;
 
 namespace VideoClub.Common.BusinessLogic.Implementations
 {
-    public class ClientVipService : IClientVipService
+    public class ClientVipService
     {
         public void UpdateDiscount(ClientVip client)
         {

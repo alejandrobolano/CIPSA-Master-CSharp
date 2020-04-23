@@ -1,9 +1,8 @@
-﻿using System;
-using VideoClub.Common.Model.Enums;
+﻿using VideoClub.Common.Model.Enums;
 
-namespace VideoClub.Common.Model.Models
+namespace VideoClub.Common.BusinessLogic.Dto
 {
-    public class Product
+    public class ProductDto
     {
         public string Id { get; set; }
         public string Title { get; set; }

@@ -38,6 +38,9 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -185,9 +188,9 @@
       <Project>{ec31283e-23f6-422e-a76c-3d8295dad297}</Project>
       <Name>VideoClub.Common.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VideoClub.Infrastructure.Repository\VideoClub.Infrastructure.Repository.csproj">
-      <Project>{bc2dbfa4-5afd-442a-945b-0fd954c3cdef}</Project>
-      <Name>VideoClub.Infrastructure.Repository</Name>
+    <ProjectReference Include="..\VideoClub.Common.Model\VideoClub.Common.Model.csproj">
+      <Project>{8D1A53CA-0134-4D4E-8515-1F5D8DF40010}</Project>
+      <Name>VideoClub.Common.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,14 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Utils;
+using VideoClub.Infrastructure.Repository.Contracts;
 
-namespace VideoClub.Common.Model.Models
+namespace VideoClub.Infrastructure.Repository.Entity
 {
-    public class Client
+    public class Client : IEntity
     {
         #region Private properties
 
@@ -17,7 +20,10 @@ namespace VideoClub.Common.Model.Models
         #endregion
 
         #region Public properties
+        [Key]
+        [Column(Order = 1)]
         public string Id { get; set; }
+        [Required]
         public string Name
         {
             get => _name;
@@ -27,6 +33,7 @@ namespace VideoClub.Common.Model.Models
                 _name = value;
             }
         }
+        [Required]
         public string LastName
         {
             get => _lastName;
@@ -36,10 +43,12 @@ namespace VideoClub.Common.Model.Models
                 _lastName = value;
             }
         }
+        [Required]
         public string Address { get; set; }
         public AccreditationEnum AccreditationType { get; set; }
+        [Required]
         public string Accreditation { get; set; }
-
+        [Required]
         public string PhoneContact
         {
             get => _phoneContact;
@@ -49,7 +58,6 @@ namespace VideoClub.Common.Model.Models
                 _phoneContact = value;
             }
         }
-
         public string PhoneAux
         {
             get => _phoneAux;
@@ -64,6 +72,7 @@ namespace VideoClub.Common.Model.Models
         public StateClientEnum State { get; set; }
         public int RentalQuantity { get; set; }
         public bool IsVip { get; set; }
+        public int Discount { get; set; }
 
         #endregion
 
@@ -73,6 +82,6 @@ namespace VideoClub.Common.Model.Models
             Id = Helper.GetCodeNumber(Helper.Client,6,random);
         }
 
-
+        
     }
 }

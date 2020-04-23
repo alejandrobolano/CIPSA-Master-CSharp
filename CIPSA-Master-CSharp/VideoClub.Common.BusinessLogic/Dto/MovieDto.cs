@@ -1,0 +1,24 @@
+﻿using System;
+using VideoClub.Common.Model.Utils;
+
+namespace VideoClub.Common.BusinessLogic.Dto
+{
+    public class MovieDto : ProductDto
+    {
+        
+        #region Public properties
+
+        public TimeSpan Duration { get; set; }
+        public int ProductionYear { get; set; }
+        public int BuyYear { get; set; }
+
+        #endregion
+        
+        public MovieDto()
+        {
+            var random = new Random();
+            Id = Helper.GetCodeNumber(Helper.Movie, 6, random);
+        }
+
+    }
+}
