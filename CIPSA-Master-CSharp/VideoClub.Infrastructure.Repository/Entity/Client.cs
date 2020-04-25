@@ -22,6 +22,7 @@ namespace VideoClub.Infrastructure.Repository.Entity
         #region Public properties
         [Key]
         [Column(Order = 1)]
+        [Index(IsUnique = true)]
         public string Id { get; set; }
         [Required]
         public string Name
@@ -29,7 +30,7 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _name;
             set
             {
-                Helper.ValidateStringClient(value);
+                CommonHelper.ValidateStringClient(value);
                 _name = value;
             }
         }
@@ -39,14 +40,16 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _lastName;
             set
             {
-                Helper.ValidateStringClient(value);
+                CommonHelper.ValidateStringClient(value);
                 _lastName = value;
             }
         }
         [Required]
         public string Address { get; set; }
         public AccreditationEnum AccreditationType { get; set; }
-        [Required]
+        [Key]
+        [Column(Order = 2)]
+        [Index(IsUnique = true)]
         public string Accreditation { get; set; }
         [Required]
         public string PhoneContact
@@ -54,7 +57,7 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _phoneContact;
             set
             {
-                Helper.ValidatePhoneNumberClient(value);
+                CommonHelper.ValidatePhoneNumberClient(value);
                 _phoneContact = value;
             }
         }
@@ -63,7 +66,10 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _phoneAux;
             set
             {
-                Helper.ValidatePhoneNumberClient(value);
+                if (value != null)
+                {
+                    CommonHelper.ValidatePhoneNumberClient(value);
+                }
                 _phoneAux = value;
             }
         }
@@ -75,12 +81,6 @@ namespace VideoClub.Infrastructure.Repository.Entity
         public int Discount { get; set; }
 
         #endregion
-
-        public Client()
-        {
-            var random = new Random();
-            Id = Helper.GetCodeNumber(Helper.Client,6,random);
-        }
 
         
     }

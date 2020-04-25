@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Extensions;
 using VideoClub.Infrastructure.Repository.UnitOfWork;
@@ -39,6 +40,13 @@ namespace VideoClub.Infrastructure.Repository.Implementations
             return _videoClubContext.Set<Movie>().FirstOrDefault(videoGame => 
                 videoGame.Id.ToLower().Equals(id.ToLower()) || 
                 videoGame.Title.ToLower().Equals(id.ToLower()));
+        }
+
+        public override bool Add(Movie model)
+        {
+            var random = new Random();
+            model.Id = Helper.GetCodeNumber(CommonHelper.Movie, 6, random);
+            return Get(model.Title) == null && base.Add(model);
         }
 
 

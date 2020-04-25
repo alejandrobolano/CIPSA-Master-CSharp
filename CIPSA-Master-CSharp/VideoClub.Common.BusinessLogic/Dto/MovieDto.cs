@@ -7,18 +7,10 @@ namespace VideoClub.Common.BusinessLogic.Dto
     {
         
         #region Public properties
-
         public TimeSpan Duration { get; set; }
         public int ProductionYear { get; set; }
         public int BuyYear { get; set; }
-
         #endregion
         
-        public MovieDto()
-        {
-            var random = new Random();
-            Id = Helper.GetCodeNumber(Helper.Movie, 6, random);
-        }
-
     }
 }

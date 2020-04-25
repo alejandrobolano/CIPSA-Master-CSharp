@@ -59,13 +59,12 @@
   <ItemGroup>
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Dto\ClientDto.cs" />
-    <Compile Include="Dto\ClientDtoVip.cs" />
     <Compile Include="Dto\MovieDto.cs" />
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="Dto\RentalDto.cs" />
     <Compile Include="Dto\VideoGameDto.cs" />
+    <Compile Include="Implementations\RentalService.cs" />
     <Compile Include="Implementations\ClientService.cs" />
-    <Compile Include="Implementations\ClientVipService.cs" />
     <Compile Include="Implementations\MovieService.cs" />
     <Compile Include="Implementations\VideoGameService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

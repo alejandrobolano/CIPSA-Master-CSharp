@@ -21,15 +21,9 @@ namespace VideoClub.Common.BusinessLogic.Dto
         public StateClientEnum State { get; set; }
         public int RentalQuantity { get; set; }
         public bool IsVip { get; set; }
-        public List<ProductDto> Products { get; set; }
+        public int Discount { get; set; }
 
         #endregion
-
-        public ClientDto()
-        {
-            var random = new Random();
-            Id = Helper.GetCodeNumber(Helper.Client,6,random);
-        }
 
 
     }

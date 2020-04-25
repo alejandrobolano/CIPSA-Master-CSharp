@@ -5,19 +5,17 @@ using VideoClub.Common.Model.Exceptions;
 
 namespace VideoClub.Common.Model.Utils
 {
-    public class Helper
+    public class CommonHelper
     {
         public static readonly string Movie = "MOV";
         public static readonly string VideoGame = "GAM";
         public static readonly string Client = "CLI";
         public static readonly string Rental = "RENTAL";
-        public static readonly string Separator = "-";
-
         public static void ValidateStringClient(string value)
         {
-            var regex = new Regex("^[a-zA-Z]+$");
+            var regex = new Regex("^[0-9]+$");
 
-            if (!regex.IsMatch(value))
+            if (regex.IsMatch(value))
                 throw new InvalidateStringClientException(value);
 
         }
@@ -29,15 +27,6 @@ namespace VideoClub.Common.Model.Utils
                 throw new InvalidatePhoneNumberException();
 
         }
-
-        public static string GetCodeNumber(string model, int length, Random random)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var result = new string(Enumerable.Repeat(chars, length)
-                    .Select(s => s[random.Next(s.Length)])
-                    .ToArray());
-
-            return model + Separator + result;
-        }
+      
     }
 }

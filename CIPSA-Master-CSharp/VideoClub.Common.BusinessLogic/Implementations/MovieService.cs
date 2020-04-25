@@ -41,9 +41,9 @@ namespace VideoClub.Common.BusinessLogic.Implementations
         public bool Add(MovieDto model)
         {
             var mapper = MapperToModel();
-            var videoGame = mapper.Map<MovieDto, Movie>(model);
+            var movie = mapper.Map<MovieDto, Movie>(model);
 
-            return _movieRepository.Add(videoGame);
+            return _movieRepository.Add(movie);
         }
 
         public bool Remove(string id)
@@ -53,29 +53,29 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         public MovieDto Get(string id)
         {
-            var game = _movieRepository.Get(id);
+            var movie = _movieRepository.Get(id);
             var mapper = MapperToDto();
-            var gameDto = mapper.Map<Movie, MovieDto>(game);
-            return gameDto;
+            var movieDto = mapper.Map<Movie, MovieDto>(movie);
+            return movieDto;
         }
 
         public bool Update(MovieDto modelDto)
         {
             var mapper = MapperToModel();
-            var game = mapper.Map<MovieDto, Movie>(modelDto);
-            return _movieRepository.Update(game);
+            var movie = mapper.Map<MovieDto, Movie>(modelDto);
+            return _movieRepository.Update(movie);
         }
 
         public List<MovieDto> All()
         {
-            var gameDtos = new List<MovieDto>();
-            _movieRepository.All().ForEach(videoGame =>
+            var movieDtos = new List<MovieDto>();
+            _movieRepository.All().ForEach(movie =>
             {
                 var mapper = MapperToDto();
-                var gameDto = mapper.Map<Movie, MovieDto>(videoGame);
-                gameDtos.Add(gameDto);
+                var movieDto = mapper.Map<Movie, MovieDto>(movie);
+                movieDtos.Add(movieDto);
             });
-            return gameDtos;
+            return movieDtos;
         }
 
         #endregion

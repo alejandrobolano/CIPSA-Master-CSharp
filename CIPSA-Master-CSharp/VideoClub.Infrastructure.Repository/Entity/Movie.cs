@@ -28,11 +28,6 @@ namespace VideoClub.Infrastructure.Repository.Entity
                 {
                     throw new InvalidYearException(value);
                 }
-
-                if (value > BuyYear)
-                {
-                    throw new InvalidCompareYearException();
-                }
                 _productionYear = value;
             }
         }
@@ -47,10 +42,6 @@ namespace VideoClub.Infrastructure.Repository.Entity
                     throw new InvalidYearException(value);
                 }
 
-                if (ProductionYear > value)
-                {
-                    throw new InvalidCompareYearException();
-                }
                 _buyYear = value;
             }
         }
@@ -59,8 +50,10 @@ namespace VideoClub.Infrastructure.Repository.Entity
         
         public Movie()
         {
-            var random = new Random();
-            Id = Helper.GetCodeNumber(Helper.Movie, 6, random);
+            if (ProductionYear > BuyYear)
+            {
+                throw new InvalidCompareYearException();
+            }
         }
 
     }

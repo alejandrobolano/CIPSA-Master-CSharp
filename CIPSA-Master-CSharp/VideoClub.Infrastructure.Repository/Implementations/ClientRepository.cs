@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using VideoClub.Common.Model.Utils;
 using VideoClub.Infrastructure.Repository.Entity;
 using VideoClub.Infrastructure.Repository.Extensions;
 using VideoClub.Infrastructure.Repository.UnitOfWork;
@@ -38,9 +39,15 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         {
             return _videoClubContext.Set<Client>().FirstOrDefault(client => 
                 client.Id.ToLower().Equals(id.ToLower()) ||
-                (client.Name.ToLower() + client.LastName.ToLower()).Replace(" ", "")
-                    .Equals(id.ToLower().Replace(" ", "")));
+                (client.Name.ToLower() + client.LastName.ToLower()).Equals(id.ToLower()) ||
+                client.Accreditation.ToLower().Equals(id.ToLower()));
+        }
 
+        public override bool Add(Client model)
+        {
+            var random = new Random();
+            model.Id = Helper.GetCodeNumber(CommonHelper.Client, 6, random);
+            return base.Add(model);
         }
 
     }

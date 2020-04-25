@@ -1,11 +1,11 @@
 using System.Data.Entity;
 using VideoClub.Infrastructure.Repository.Entity;
+using VideoClub.Infrastructure.Repository.Utils;
 
 namespace VideoClub.Infrastructure.Repository
 {
     public class VideoClubContext : DbContext
     {
-        private const string ConnectionString = "data source=.;initial catalog=VideoClub;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Rental> Rentals { get; set; }
@@ -16,7 +16,7 @@ namespace VideoClub.Infrastructure.Repository
         {
             return _videoClubContext ?? (_videoClubContext = new VideoClubContext());
         }
-        public VideoClubContext() : base(ConnectionString)
+        public VideoClubContext() : base($"name=VideoClubConnection")
         {
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }

@@ -10,10 +10,11 @@ namespace VideoClub.Infrastructure.Repository.Entity
     {
         [Key]
         [Column(Order = 1)]
+        [Index(IsUnique = true)]
         public string Id { get; set; }
         [Key]
         [Column(Order = 2)]
-        [Required]
+        [Index(IsUnique = true)]
         public string Title { get; set; }
         public int NumberDisc { get; set; }
         public StateProductEnum State { get; set; }

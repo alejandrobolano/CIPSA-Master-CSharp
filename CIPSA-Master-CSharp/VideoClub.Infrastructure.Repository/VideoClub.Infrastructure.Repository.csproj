@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Client.cs" />
-    <Compile Include="Entity\ClientVip.cs" />
     <Compile Include="Contracts\IEntity.cs" />
     <Compile Include="Entity\Movie.cs" />
     <Compile Include="Entity\Product.cs" />
@@ -67,20 +66,9 @@
     <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Implementations\ClientRepository.cs" />
     <Compile Include="Implementations\CommonRepository.cs" />
+    <Compile Include="Implementations\RentalRepository.cs" />
     <Compile Include="Implementations\MovieRepository.cs" />
     <Compile Include="Implementations\VideoGameRepository.cs" />
-    <Compile Include="Migrations\202004221456533_InitialMigration.cs" />
-    <Compile Include="Migrations\202004221456533_InitialMigration.designer.cs">
-      <DependentUpon>202004221456533_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004221546510_InitialMigrationForAllTables.cs" />
-    <Compile Include="Migrations\202004221546510_InitialMigrationForAllTables.designer.cs">
-      <DependentUpon>202004221546510_InitialMigrationForAllTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004221548408_UpdateMigrationForAllTables.cs" />
-    <Compile Include="Migrations\202004221548408_UpdateMigrationForAllTables.designer.cs">
-      <DependentUpon>202004221548408_UpdateMigrationForAllTables.cs</DependentUpon>
-    </Compile>
     <Compile Include="VideoClubContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,17 +87,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004221456533_InitialMigration.resx">
-      <DependentUpon>202004221456533_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004221546510_InitialMigrationForAllTables.resx">
-      <DependentUpon>202004221546510_InitialMigrationForAllTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004221548408_UpdateMigrationForAllTables.resx">
-      <DependentUpon>202004221548408_UpdateMigrationForAllTables.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

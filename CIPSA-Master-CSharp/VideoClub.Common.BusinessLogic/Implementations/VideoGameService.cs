@@ -44,13 +44,6 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
          public bool Add(VideoGameDto model)
         {
-            model = new VideoGameDto()
-            {
-                NumberDisc = 1,
-                Price = 2,
-                Title = "Beta",
-                Platform = GamePlatformEnum.Wii
-            };
             var mapper = MapperToModel();
             var videoGame = mapper.Map<VideoGameDto, VideoGame>(model);
 
