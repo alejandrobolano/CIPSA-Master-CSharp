@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\AccreditationEnum.cs" />
-    <Compile Include="Enums\EnumExtension.cs" />
     <Compile Include="Enums\GamePlatformEnum.cs" />
     <Compile Include="Enums\StateClientEnum.cs" />
     <Compile Include="Enums\StateProductEnum.cs" />

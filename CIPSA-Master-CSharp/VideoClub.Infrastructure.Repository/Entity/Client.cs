@@ -57,7 +57,7 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _phoneContact;
             set
             {
-                CommonHelper.ValidatePhoneNumberClient(value);
+                //CommonHelper.ValidatePhoneNumberClient(value);
                 _phoneContact = value;
             }
         }
@@ -66,10 +66,10 @@ namespace VideoClub.Infrastructure.Repository.Entity
             get => _phoneAux;
             set
             {
-                if (value != null)
-                {
-                    CommonHelper.ValidatePhoneNumberClient(value);
-                }
+                //if (string.IsNullOrEmpty(value))
+                //{
+                //    CommonHelper.ValidatePhoneNumberClient(value);
+                //}
                 _phoneAux = value;
             }
         }

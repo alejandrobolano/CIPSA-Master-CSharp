@@ -5,7 +5,7 @@ using VideoClub.Common.Model.Exceptions;
 
 namespace VideoClub.Common.Model.Utils
 {
-    public class CommonHelper
+    public static class CommonHelper
     {
         public static readonly string Movie = "MOV";
         public static readonly string VideoGame = "GAM";

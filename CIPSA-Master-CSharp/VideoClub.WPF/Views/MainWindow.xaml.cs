@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
-using VideoClub.Common.Model.Utils;
 using VideoClub.DialogsView;
-using VideoGameDto = VideoClub.Common.BusinessLogic.Dto.VideoGameDto;
+using VideoClub.WPF.Views.DialogsView;
 
 namespace VideoClub.WPF.Views
 {
@@ -47,23 +46,27 @@ namespace VideoClub.WPF.Views
             var clientService = new ClientService();
             //clientService.Add(client1);
 
-            var client = clientService.Get("CLI-IC8JLZ");
-            var product = movieService.Get("Casa negra");
-            var rental = new RentalDto
-            {
-                ClientAccreditation = client.Accreditation,
-                ClientId = client.Id,
-                ProductTitle = product.Title,
-                ProductId = product.Id,
-                FinishRental = new DateTime(2020, 11, 23),
-                StartRental = DateTime.Today
-            };
+            //var client = clientService.Get("CLI-IC8JLZ");
+            //var product = movieService.Get("Casa negra");
+            //var startRental = DateTime.Today;
+            //var quantity = 2;
+            //var quantityTimeSpan = new TimeSpan(quantity,0,0,0);
+            //var finishRental = startRental.Add(quantityTimeSpan);
+            //var rental = new RentalDto
+            //{
+            //    ClientAccreditation = client.Accreditation,
+            //    ClientId = client.Id,
+            //    ProductTitle = product.Title,
+            //    ProductId = product.Id,
+            //    FinishRental = finishRental,
+            //    StartRental = startRental
+            //};
 
-            var rentalService = new RentalService();
-            rentalService.RentProduct(rental,CommonHelper.Movie, StateProductEnum.NonAvailable);
-            var foo1 = rentalService.GetRentalsByClient("CLI-IC8JLZ");
-            var foo2 = rentalService.GetRentalsByProduct("CLI-IC8JLZ");
-            var foo3 = rentalService.GetRentalsByProduct("Casa de papel");
+            //var rentalService = new RentalService();
+            //rentalService.StartRentalProduct(rental, StateProductEnum.NonAvailable);
+            //var foo1 = rentalService.GetRentalsByClient("CLI-IC8JLZ");
+            //var foo2 = rentalService.GetRentalsByProduct("CLI-IC8JLZ");
+            //var foo3 = rentalService.GetRentalsByProduct("Casa de papel");
 
             //var videoGame = new VideoGameDto()
             //{
@@ -77,10 +80,24 @@ namespace VideoClub.WPF.Views
             //metroWindow.ShowMessageAsync("Actualizacion", $"Nuevo nombre: ...");
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonMovieWindows_OnClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new MovieDialog();
-            dialog.ShowModalDialogExternally();
+            var movieWindows = new MovieWindow();
+            movieWindows.Show();
+            //var dialog = new MovieDialog();
+            //dialog.ShowModalDialogExternally();
+        }
+
+        private void ButtonClientsWindows_OnClick(object sender, RoutedEventArgs e)
+        {
+            var clientsWindows = new ClientWindow();
+            clientsWindows.Show();
+        }
+
+        private void ButtonVideoGamesWindows_OnClick(object sender, RoutedEventArgs e)
+        {
+            var videoGameWindows = new VideoGameWindow();
+            videoGameWindows.Show();
         }
     }
 }

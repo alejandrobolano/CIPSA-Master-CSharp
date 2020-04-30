@@ -61,6 +61,15 @@ namespace VideoClub.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formulario de Clientes.
+        /// </summary>
+        public static string ClientWindowTitle {
+            get {
+                return ResourceManager.GetString("ClientWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version Original.
         /// </summary>
         public static string Title {

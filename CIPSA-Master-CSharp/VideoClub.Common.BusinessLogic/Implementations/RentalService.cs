@@ -100,12 +100,12 @@ namespace VideoClub.Common.BusinessLogic.Implementations
 
         #region custom public methods
 
-        public bool RentProduct(RentalDto rentalDto, string typeProduct, StateProductEnum stateNew)
+        public bool StartRentalProduct(RentalDto rentalDto, StateProductEnum stateNew)
         {
             var result = Add(rentalDto);
             if (result)
             {
-                if (typeProduct.Equals(CommonHelper.Movie))
+                if (rentalDto.Id.Contains(CommonHelper.Movie))
                 {
                     var movie = _movieService.Get(rentalDto.ProductId);
                     movie.State = stateNew;
@@ -122,6 +122,30 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             return result;
         }
 
+        public bool FinishRentalProduct(string idClient, string idProduct, out decimal differencePrice)
+        {
+            bool result;
+            var rental = GetRentalByClientAndProduct(idClient, idProduct);
+            var differenceDays = DateTime.Today - rental.FinishRental;
+            if (idProduct.Contains(CommonHelper.Movie))
+            {
+                var movie = _movieService.Get(idProduct);
+                movie.State = StateProductEnum.Available;
+                result = _movieService.Update(movie);
+                differencePrice = differenceDays.Days * movie.Price;
+            }
+            else
+            {
+                var videoGame = _videoGameService.Get(idProduct);
+                videoGame.State = StateProductEnum.Available;
+                result = _videoGameService.Update(videoGame);
+                differencePrice = differenceDays.Days * videoGame.Price;
+            }
+               
+            return result;
+        }
+
+
         public List<RentalDto> GetRentalsByClient(string id)
         {
             var rentalsByClient = _rentalRepository.GetRentalsByClient(id);
@@ -135,6 +159,13 @@ namespace VideoClub.Common.BusinessLogic.Implementations
             var mapper = MapperToDto();
             var rentalsByProductDtos = mapper.Map<List<Rental>, List<RentalDto>>(rentals);
             return rentalsByProductDtos;
+        }
+        public RentalDto GetRentalByClientAndProduct(string idClient, string idProduct)
+        {
+            var rental = _rentalRepository.GetRentalByClientAndProduct(idClient, idProduct);
+            var mapper = MapperToDto();
+            var rentalByClientAndProduct = mapper.Map<Rental, RentalDto>(rental);
+            return rentalByClientAndProduct;
         }
 
         #endregion

@@ -62,6 +62,15 @@ namespace VideoClub.Infrastructure.Repository.Implementations
                 (rental.Client.Name.ToLower() + rental.Client.LastName.ToLower()).Replace(" ", "")
                 .Equals(id.ToLower().Replace(" ", ""))).ToList();
         }
+        public Rental GetRentalByClientAndProduct(string idClient, string idProduct)
+        {
+            return _videoClubContext.Set<Rental>().FirstOrDefault(rental =>
+                rental.Client.Id.ToLower().Equals(idClient.ToLower()) ||
+                (rental.Client.Name.ToLower() + rental.Client.LastName.ToLower()).Replace(" ", "")
+                .Equals(idClient.ToLower().Replace(" ", "")) &&
+                rental.Product.Id.ToLower().Equals(idProduct.ToLower()) ||
+                rental.Product.Title.ToLower().Equals(idProduct.ToLower()));
+        }
 
 
     }

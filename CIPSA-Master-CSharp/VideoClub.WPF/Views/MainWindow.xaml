@@ -16,13 +16,19 @@
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button Content="settings" />
-            <Button>
+            <Button Click="ButtonClientsWindows_OnClick">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconModern Width="24" Height="24" Kind="User" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="clientes" />
+                </StackPanel>
+            </Button>
+            <Button Click="ButtonVideoGamesWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="ControllerXbox" />
                     <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="games" />
                 </StackPanel>
             </Button>
-            <Button Click="ButtonBase_OnClick">
+            <Button Click="ButtonMovieWindows_OnClick">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="MovieClapper" />
                     <TextBlock Margin="4 0 0 0" VerticalAlignment="Center"  Text="movies" />
