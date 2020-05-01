@@ -6,7 +6,7 @@ namespace VideoClub.Common.BusinessLogic.Dto
     {
         public string Id { get; set; }
         public string Title { get; set; }
-        public int NumberDisc { get; set; }
+        public int QuantityDisc { get; set; }
         public StateProductEnum State { get; set; }
         public decimal Price { get; set; }
 

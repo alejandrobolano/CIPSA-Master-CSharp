@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Migrations.Model;
 using VideoClub.Common.Model.Enums;
 using VideoClub.Infrastructure.Repository.Contracts;
 
@@ -16,7 +15,7 @@ namespace VideoClub.Infrastructure.Repository.Entity
         [Column(Order = 2)]
         [Index(IsUnique = true)]
         public string Title { get; set; }
-        public int NumberDisc { get; set; }
+        public int QuantityDisc { get; set; }
         public StateProductEnum State { get; set; }
         [Required]
         public decimal Price { get; set; }
