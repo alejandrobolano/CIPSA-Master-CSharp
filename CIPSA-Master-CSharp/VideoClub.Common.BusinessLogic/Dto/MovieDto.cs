@@ -1,5 +1,4 @@
 ﻿using System;
-using VideoClub.Common.Model.Utils;
 
 namespace VideoClub.Common.BusinessLogic.Dto
 {

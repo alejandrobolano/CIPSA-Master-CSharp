@@ -10,6 +10,12 @@
         Title="Formulario de Películas"  
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <TextBlock Name="DateNowTextBlock" Loaded="DateNowTextBlock_OnLoaded" Margin="4 0 0 0" VerticalAlignment="Center" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
     <DockPanel>
 
 

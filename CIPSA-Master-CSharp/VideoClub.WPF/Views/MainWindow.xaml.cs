@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
-using VideoClub.Common.Model.Enums;
-using VideoClub.DialogsView;
-using VideoClub.WPF.Views.DialogsView;
+using VideoClub.Common.Model.Extensions;
 
 namespace VideoClub.WPF.Views
 {

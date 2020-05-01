@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,8 +11,6 @@ using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
 using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Extensions;
-using VideoClub.DialogsView;
-using VideoClub.WPF.Views.DialogsView;
 
 namespace VideoClub.WPF.Views
 {
@@ -30,6 +23,8 @@ namespace VideoClub.WPF.Views
         private ClientService _clientService;
         private IList<ClientDto> _clients;
         private readonly IDictionary<AccreditationEnum, string> _itemsAccreditationType;
+        private ClientDto _clientSelected;
+        private readonly string _prefixSpain = "34";
         public ClientWindow()
         {
             InitializeComponent();
@@ -72,7 +67,9 @@ namespace VideoClub.WPF.Views
 
         private void AccreditationDropDown_OnLoaded(object sender, RoutedEventArgs e)
         {
-            AccreditationDropDown.ItemsSource = _itemsAccreditationType.Values;
+            var items = new List<string> {string.Empty};
+            items.AddRange(_itemsAccreditationType.Values);
+            AccreditationDropDown.ItemsSource = items;
         }
 
         private void DateNowTextBlock_OnLoaded(object sender, RoutedEventArgs e)
@@ -80,42 +77,57 @@ namespace VideoClub.WPF.Views
             DateNowTextBlock.Text = _todayDateTime.ToShortDateString();
         }
 
-        private bool AddClientWithDataFromFields()
+        private bool AddClient()
         {
-            var accreditationType = _itemsAccreditationType.FirstOrDefault(x => x.Value.Equals(AccreditationDropDown.SelectedValue)).Key;
-            var client = new ClientDto
-            {
-                Accreditation = AccreditationText.Text,
-                AccreditationType = accreditationType,
-                Address = AddressText.Text,
-                Email = EmailText.Text,
-                Name = NameText.Text,
-                LastName = LastNameText.Text,
-                PhoneContact = PhoneContactText?.Text,
-                PhoneAux = PhoneAuxText?.Text,
-                SubscriptionDate = _todayDateTime
-            };
+            var client = new ClientDto();
+            FillDataFromFields(client);
             return _clientService.Add(client);
         }
 
-        private void FillFieldsDataFromDataGrid(object sender)
+        private void FillDataFromFields(ClientDto client)
         {
-            var rowSelectedValue = sender as DataGrid;
-            var client = (ClientDto)rowSelectedValue?.SelectedValue;
-            if (client == null) return;
-            AccreditationText.Text = client.Accreditation;
-            AccreditationDropDown.SelectedItem = _itemsAccreditationType[client.AccreditationType];
-            AddressText.Text = client.Address;
-            EmailText.Text = client.Email;
-            NameText.Text = client.Name;
-            LastNameText.Text = client.LastName;
-            PhoneContactText.Text = client.PhoneContact;
-            PhoneAuxText.Text = client.PhoneAux;
+            var accreditationType = _itemsAccreditationType.FirstOrDefault(x => x.Value.Equals(AccreditationDropDown.SelectedValue)).Key;
+            client.Accreditation = AccreditationText.Text;
+            client.AccreditationType = accreditationType;
+            client.Address = AddressText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            client.Email = EmailText.Text.RemoveMultipleSpace();
+            client.Name = NameText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            client.LastName = LastNameText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
+            client.PhoneContact = _prefixSpain + PhoneContactText?.Text;
+            client.PhoneAux = string.IsNullOrEmpty(PhoneAuxText?.Text) ? string.Empty : _prefixSpain + PhoneAuxText?.Text;
+            client.SubscriptionDate = _todayDateTime;
+        }
+
+        private bool UpdateClientWithDataFromFields()
+        {
+            FillDataFromFields(_clientSelected);
+            return _clientService.Update(_clientSelected);
+        }
+
+        private void FillDataFromDataGrid()
+        {
+            if (_clientSelected == null) return;
+            AccreditationText.Text = _clientSelected.Accreditation;
+            AccreditationDropDown.SelectedItem = _itemsAccreditationType[_clientSelected.AccreditationType];
+            AddressText.Text = _clientSelected.Address;
+            EmailText.Text = _clientSelected.Email;
+            NameText.Text = _clientSelected.Name;
+            LastNameText.Text = _clientSelected.LastName;
+            PhoneContactText.Text = _clientSelected.PhoneContact.Replace(_prefixSpain, string.Empty);
+            PhoneAuxText.Text = string.IsNullOrEmpty(_clientSelected.PhoneAux)
+                ? string.Empty
+                : _clientSelected.PhoneAux.Replace(_prefixSpain, string.Empty);
+            VipCheckBox.IsChecked = _clientSelected.IsVip;
+        }
+
+        private bool RemoveClient(ClientDto client)
+        {
+            return _clientService.Remove(client.Id);
         }
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AddClientWithDataFromFields())
+            if (AddClient())
             {
                 await LoadDataGrid();
             }
@@ -123,7 +135,93 @@ namespace VideoClub.WPF.Views
 
         private void ClientDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            FillFieldsDataFromDataGrid(sender);
+            ChangeEnabledToButtons(true);
+            FillFields(sender);
+        }
+
+        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UpdateClientWithDataFromFields())
+            {
+                await LoadDataGrid();
+            }
+        }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (RemoveClient(_clientSelected))
+            {
+                await LoadDataGrid();
+            }
+        }
+
+        private void UpdateButtonDataGrid_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChangeEnabledToButtons(true);
+            FillFields(sender);
+        }
+
+        private void ChangeEnabledToButtons(bool isEnabled)
+        {
+            UpdateButton.IsEnabled = isEnabled;
+            DeleteButton.IsEnabled = isEnabled;
+            AddButton.IsEnabled = !isEnabled;
+        }
+
+        private void FillFields(object sender)
+        {
+            ClientSelected(sender);
+            FillDataFromDataGrid();
+            MainPanel.IsEnabled = true;
+        }
+
+        private void ClientSelected(object sender)
+        {
+            switch (sender)
+            {
+                case Button rowButton:
+                    _clientSelected = (ClientDto)rowButton?.DataContext;
+                    break;
+                case DataGrid rowDataGrid:
+                    _clientSelected = (ClientDto)rowDataGrid?.SelectedValue;
+                    break;
+            }
+        }
+
+        private async void DeleteButtonDataGrid_OnClick(object sender, RoutedEventArgs e)
+        {
+            ClientSelected(sender);
+            if (RemoveClient(_clientSelected))
+            {
+                await LoadDataGrid();
+            }
+        }
+
+        private void NewButton_OnClickButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeEnabledToButtons(false);
+            ClearFields(MainPanel);
+            MainPanel.IsEnabled = true;
+        }
+
+
+        public static void ClearFields(StackPanel panel)
+        {
+            foreach (var control in panel.Children)
+            {
+                switch (control)
+                {
+                    case TextBox box:
+                        box.Text = string.Empty;
+                        break;
+                    case ComboBox box:
+                        box.SelectedItem = string.Empty;
+                        break;
+                    case StackPanel panelChild:
+                        ClearFields(panelChild);
+                        break;
+                }
+            }
         }
     }
 }
