@@ -1,4 +1,5 @@
 ﻿using VideoClub.Common.Model.Enums;
+using VideoClub.Common.Model.Extensions;
 
 namespace VideoClub.Common.BusinessLogic.Dto
 {
@@ -9,6 +10,7 @@ namespace VideoClub.Common.BusinessLogic.Dto
         public int QuantityDisc { get; set; }
         public StateProductEnum State { get; set; }
         public decimal Price { get; set; }
+        public string StateDescription => State.GetDescription();
 
     }
 }
