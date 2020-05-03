@@ -34,7 +34,8 @@
                     <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
-                    
+                    <Label Content="Plataforma"/>
+                    <ComboBox Name="PlatformDropDown" Width="76" Loaded="PlatformDropDown_OnLoadedDropDown_OnLoaded"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,10,15,10">

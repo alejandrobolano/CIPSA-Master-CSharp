@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,6 +9,7 @@ using System.Windows.Input;
 using MahApps.Metro.Controls;
 using VideoClub.Common.BusinessLogic.Dto;
 using VideoClub.Common.BusinessLogic.Implementations;
+using VideoClub.Common.Model.Enums;
 using VideoClub.Common.Model.Extensions;
 
 namespace VideoClub.WPF.Views
@@ -21,10 +23,24 @@ namespace VideoClub.WPF.Views
         private VideoGameService _videoGameService;
         private IList<VideoGameDto> _videosGame;
         private VideoGameDto _videoGameSelected;
+        private IDictionary<GamePlatformEnum, string> _itemsPlatform;
         public VideoGameWindow()
         {
             InitializeComponent();
             _todayDateTime = DateTime.Today;
+            FillSourcePlatformComboBox();
+        }
+
+        private void FillSourcePlatformComboBox()
+        {
+            _itemsPlatform = new Dictionary<GamePlatformEnum, string>
+            {
+                {GamePlatformEnum.Pc, GamePlatformEnum.Pc.GetDescription()},
+                {GamePlatformEnum.Ps2, GamePlatformEnum.Ps2.GetDescription()},
+                {GamePlatformEnum.Ps3, GamePlatformEnum.Ps3.GetDescription()},
+                {GamePlatformEnum.Wii, GamePlatformEnum.Wii.GetDescription()},
+                {GamePlatformEnum.XBox, GamePlatformEnum.XBox.GetDescription()}
+            };
         }
 
         private void DateNowTextBlock_OnLoaded(object sender, RoutedEventArgs e)
@@ -105,6 +121,7 @@ namespace VideoClub.WPF.Views
             TitleText.Text = _videoGameSelected.Title;
             PriceNumeric.Value = Convert.ToDouble(_videoGameSelected.Price, CultureInfo.CurrentCulture);
             QuantityNumeric.Value = _videoGameSelected.QuantityDisc;
+            PlatformDropDown.SelectedItem = _itemsPlatform[_videoGameSelected.Platform];
         }
 
         private bool AddVideoGame()
@@ -116,9 +133,11 @@ namespace VideoClub.WPF.Views
 
         private void FillDataFromFields(VideoGameDto videoGame)
         {
+            var platform = _itemsPlatform.FirstOrDefault(x => x.Value.Equals(PlatformDropDown.SelectedValue)).Key;
             videoGame.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
             videoGame.Price = Convert.ToDecimal(PriceNumeric.Value);
             videoGame.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
+            videoGame.Platform = platform;
         }
 
         private bool RemoveVideoGame(VideoGameDto videoGame)
@@ -161,6 +180,13 @@ namespace VideoClub.WPF.Views
                 await LoadDataGrid();
             }
             HelperWindow.ClearFields(MainPanel);
+        }
+
+        private void PlatformDropDown_OnLoadedDropDown_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var items = new List<string> { string.Empty };
+            items.AddRange(_itemsPlatform.Values);
+            PlatformDropDown.ItemsSource = items;
         }
     }
 }
