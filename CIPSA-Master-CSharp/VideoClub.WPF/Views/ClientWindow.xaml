@@ -62,7 +62,7 @@
         </StackPanel>
 
         <DataGrid Name="ClientDataGrid" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False"
-                  Loaded="ClientDataGrid_OnLoadedDataGrid_OnLoaded" AutoGenerateColumns="False" IsReadOnly="True"
+                  Loaded="ClientDataGrid_OnLoadedDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
                   Margin="10,15,10,0" SelectionMode="Single" MouseDoubleClick="ClientDataGrid_OnMouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
@@ -70,10 +70,11 @@
                 <DataGridTextColumn Header="Apellidos" Binding="{Binding LastName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Dirección" Binding="{Binding Address}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Correo" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="" Binding="{Binding AccreditationTypeDescription}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Acreditación" Binding="{Binding Accreditation}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Teléfono 1" Binding="{Binding PhoneContact}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Teléfono 2" Binding="{Binding PhoneAux}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estado" Binding="{Binding State}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estado" Binding="{Binding StateDescription}"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header="VIP" Binding="{Binding IsVip}" IsReadOnly="True"></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Rentas" Binding="{Binding RentalQuantity}"></DataGridTextColumn>
                 <DataGridTextColumn Header="%" Binding="{Binding Discount}"></DataGridTextColumn>

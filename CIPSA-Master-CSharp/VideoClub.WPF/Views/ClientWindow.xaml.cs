@@ -47,7 +47,7 @@ namespace VideoClub.WPF.Views
             await Task.Run(LoadingData);
         }
 
-        private async void ClientDataGrid_OnLoadedDataGrid_OnLoaded(object sender, RoutedEventArgs e)
+        private async void ClientDataGrid_OnLoadedDataGrid(object sender, RoutedEventArgs e)
         {
             await LoadDataGrid();
         }
@@ -98,7 +98,7 @@ namespace VideoClub.WPF.Views
             client.SubscriptionDate = _todayDateTime;
         }
 
-        private bool UpdateClientWithDataFromFields()
+        private bool UpdateClient()
         {
             FillDataFromFields(_clientSelected);
             return _clientService.Update(_clientSelected);
@@ -141,7 +141,7 @@ namespace VideoClub.WPF.Views
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (UpdateClientWithDataFromFields())
+            if (UpdateClient())
             {
                 await LoadDataGrid();
             }
@@ -200,28 +200,11 @@ namespace VideoClub.WPF.Views
         private void NewButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
             ChangeEnabledToButtons(false);
-            ClearFields(MainPanel);
+            HelperWindow.ClearFields(MainPanel);
             MainPanel.IsEnabled = true;
         }
 
 
-        public static void ClearFields(StackPanel panel)
-        {
-            foreach (var control in panel.Children)
-            {
-                switch (control)
-                {
-                    case TextBox box:
-                        box.Text = string.Empty;
-                        break;
-                    case ComboBox box:
-                        box.SelectedItem = string.Empty;
-                        break;
-                    case StackPanel panelChild:
-                        ClearFields(panelChild);
-                        break;
-                }
-            }
-        }
+        
     }
 }
