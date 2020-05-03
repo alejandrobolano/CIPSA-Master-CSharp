@@ -37,7 +37,13 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
-    <DockPanel HorizontalAlignment="Left" Height="422" LastChildFill="False" VerticalAlignment="Top" Width="795" Margin="0,0,-0.333,0">
-
-    </DockPanel>
+    <Grid HorizontalAlignment="Left" Height="422"  VerticalAlignment="Top" Width="795" Margin="0,0,-0.333,0">
+        <Controls:Tile Title="Clientes" Click="ButtonClientsWindows_OnClick"
+                       Background="IndianRed"
+                       HorizontalTitleAlignment="Center" Margin="40,36,428,246" Width="Auto">
+            <iconPacks:PackIconModern Width="40"
+                                      Height="40"
+                                      Kind="User" />
+        </Controls:Tile>
+    </Grid>
 </mah:MetroWindow>

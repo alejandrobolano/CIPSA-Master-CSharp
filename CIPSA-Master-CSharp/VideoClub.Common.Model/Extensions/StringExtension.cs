@@ -14,12 +14,13 @@ namespace VideoClub.Common.Model.Extensions
                 {
                     result.Append(x.ToUpperFirstLetter()).Append(" ");
                 });
-
-            return result.ToString();
+            var lastWhiteSpace = result.ToString().LastIndexOf(' ');
+            return result.ToString().Remove(lastWhiteSpace);
         }
 
         public static string ToUpperFirstLetter(this string value)
         {
+            if (string.IsNullOrEmpty(value)) return value;
             var charArray = value.ToCharArray();
             charArray[0] = char.ToUpper(charArray[0]);
             return new string(charArray);
