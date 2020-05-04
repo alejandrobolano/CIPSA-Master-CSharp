@@ -27,17 +27,17 @@
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Label Content="Título" Width="64" />
                     <TextBox Name="TitleText"  Height="23" TextWrapping="Wrap" Text="" Width="220"  MaxLines="1"
-                         mah:TextBoxHelper.Watermark="título"/>
+                         mah:TextBoxHelper.Watermark="título" mah:TextBoxHelper.ClearTextButton="True" />
                     <Label Content="Precio" Width="67"/>
                     <mah:NumericUpDown Name="PriceNumeric" Minimum="0" Maximum="99" StringFormat="€ 0.00" NumericInputMode="Decimal" />
-                    <Label Content="Cantidad de discos"/>
+                    <Label Content="Cantidad de discos" Margin="15,0,0,0"/>
                     <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Duración" />
                         <mah:NumericUpDown Name="HourDurationNumeric" Minimum="0" Maximum="24" Interval="1" 
-                                   mah:TextBoxHelper.Watermark="hh" UpDownButtonsWidth="15" NumericInputMode="Numbers"/>
+                                   mah:TextBoxHelper.Watermark="hh" UpDownButtonsWidth="15" NumericInputMode="Numbers" Margin="5,0,0,0"/>
                         <mah:NumericUpDown Name="MinuteDurationNumeric" Minimum="0" Maximum="60" Interval="1" 
                                    mah:TextBoxHelper.Watermark="mm" UpDownButtonsWidth="15" NumericInputMode="Numbers"/>
                         <mah:NumericUpDown Name="SecondDurationNumeric" Minimum="0" Maximum="60" Interval="1" 
@@ -45,11 +45,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
                         <Label Content="Año de producción"/>
-                        <mah:NumericUpDown x:Name="ProductionYearNumeric" Minimum="1900" Maximum="2020" Interval="1" 
-                                   mah:TextBoxHelper.Watermark="yyyy" HideUpDownButtons="True" NumericInputMode="Numbers"/>
+                        <TextBox Name="ProductionYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="4" Margin="5,0,0,0"/>
                         <Label Content="Año de compra"/>
-                        <mah:NumericUpDown x:Name="BuyYearNumeric" Minimum="2000" Maximum="2020" Interval="1"
-                                   mah:TextBoxHelper.Watermark="yyyy" HideUpDownButtons="True" NumericInputMode="Numbers"/>
+                        <TextBox Name="BuyYearText" mah:TextBoxHelper.Watermark="yyyy" Width="65" PreviewTextInput="NumberValidationTextBox"
+                                 mah:TextBoxHelper.ClearTextButton="True" MaxLength="4"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

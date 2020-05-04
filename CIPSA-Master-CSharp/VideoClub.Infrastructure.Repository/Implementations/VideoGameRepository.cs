@@ -46,7 +46,7 @@ namespace VideoClub.Infrastructure.Repository.Implementations
         {
             var random = new Random();
             model.Id = Helper.GetCodeNumber(CommonHelper.VideoGame, 6, random);
-            return Get(model.Title) == null && base.Add(model);
+            return base.Add(model);
         }
 
     }

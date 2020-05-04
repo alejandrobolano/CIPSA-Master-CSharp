@@ -27,15 +27,15 @@
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Label Content="Título" Width="64" />
                     <TextBox Name="TitleText"  Height="23" TextWrapping="Wrap" Text="" Width="220"  MaxLines="1"
-                         mah:TextBoxHelper.Watermark="título"/>
+                         mah:TextBoxHelper.Watermark="título" mah:TextBoxHelper.ClearTextButton="True" Margin="5,0,0,0"/>
                     <Label Content="Precio" Width="67"/>
-                    <mah:NumericUpDown Name="PriceNumeric" Minimum="0" Maximum="99" StringFormat="€ 0.00" NumericInputMode="Decimal" />
-                    <Label Content="Cantidad de discos"/>
-                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers"/>
+                    <mah:NumericUpDown Name="PriceNumeric" Minimum="0" Maximum="99" StringFormat="€ 0.00" NumericInputMode="Decimal" Width="95" />
+                    <Label Content="Cantidad de discos" Margin="5,0,0,0"/>
+                    <mah:NumericUpDown Name="QuantityNumeric" Minimum="0" Maximum="10" Interval="1" InterceptManualEnter="False" NumericInputMode="Numbers" Width="75"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Label Content="Plataforma"/>
-                    <ComboBox Name="PlatformDropDown" Width="76" Loaded="PlatformDropDown_OnLoadedDropDown_OnLoaded"/>
+                    <ComboBox Name="PlatformDropDown" Width="115" Loaded="PlatformDropDown_OnLoadedDropDown_OnLoaded"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,10,15,10">

@@ -38,12 +38,35 @@
     </Controls:MetroWindow.RightWindowCommands>
 
     <Grid HorizontalAlignment="Left" Height="422"  VerticalAlignment="Top" Width="795" Margin="0,0,-0.333,0">
-        <Controls:Tile Title="Clientes" Click="ButtonClientsWindows_OnClick"
-                       Background="IndianRed"
+        <Controls:Tile Title="Crear renta rápida" Click="ButtonRentalsWindows_OnClick"
+                       Background="YellowGreen" ToolTip="Gestione todas las rentas"
                        HorizontalTitleAlignment="Center" Margin="40,36,428,246" Width="Auto">
-            <iconPacks:PackIconModern Width="40"
-                                      Height="40"
-                                      Kind="User" />
+            <iconPacks:PackIconModern Width="60"
+                                      Height="60"
+                                      Kind="InboxIn" />
         </Controls:Tile>
+        <Controls:Tile Title="Crear devolución rápida" 
+                       Background="Beige" ToolTip="Gestione todas las rentas"
+                       HorizontalTitleAlignment="Center" Margin="428,36,41,246" Width="Auto">
+            <iconPacks:PackIconModern Width="60"
+                                      Height="60"
+                                      Kind="InboxOut" />
+        </Controls:Tile>
+        <Controls:Tile Title="VIP"
+                       Background="PaleVioletRed" ToolTip="Gestione todas las rentas"
+                       HorizontalTitleAlignment="Center" Margin="40,269,631,57" Width="Auto" Height="Auto">
+            <iconPacks:PackIconModern Width="25"
+                                      Height="25"
+                                      Kind="UserTie" />
+        </Controls:Tile>
+        <Controls:Tile Title="Desactivación"
+                       Background="BurlyWood" ToolTip="Gestione todas las rentas"
+                       HorizontalTitleAlignment="Center" Margin="197,269,472,57" Width="Auto" Height="Auto">
+            <iconPacks:PackIconModern Width="25"
+                                      Height="25"
+                                      Kind="Noentry" />
+        </Controls:Tile>
+        <Label Content="Proceso manual para los clientes" HorizontalAlignment="Left"
+               Margin="40,239,0,0" VerticalAlignment="Top" mah:ControlsHelper.ContentCharacterCasing="Upper"/>
     </Grid>
 </mah:MetroWindow>

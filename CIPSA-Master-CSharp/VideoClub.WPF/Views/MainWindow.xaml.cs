@@ -93,5 +93,11 @@ namespace VideoClub.WPF.Views
             var videoGameWindows = new VideoGameWindow();
             videoGameWindows.Show();
         }
+
+        private void ButtonRentalsWindows_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rentalsWindow = new RentalsWindow();
+            rentalsWindow.Show();
+        }
     }
 }

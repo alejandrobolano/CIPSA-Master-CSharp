@@ -105,11 +105,11 @@ namespace VideoClub.WPF.Views
             TitleText.Text = _movieSelected.Title;
             PriceNumeric.Value = Convert.ToDouble(_movieSelected.Price, CultureInfo.CurrentCulture);
             QuantityNumeric.Value = _movieSelected.QuantityDisc;
-            ProductionYearNumeric.Value = _movieSelected.ProductionYear;
-            BuyYearNumeric.Value= _movieSelected.BuyYear;
+            ProductionYearText.Text = _movieSelected.ProductionYear.ToString();
+            BuyYearText.Text = _movieSelected.BuyYear.ToString();
             HourDurationNumeric.Value = _movieSelected.Duration.Hours;
-            MinuteDurationNumeric.Value= _movieSelected.Duration.Minutes;
-            SecondDurationNumeric.Value= _movieSelected.Duration.Seconds;
+            MinuteDurationNumeric.Value = _movieSelected.Duration.Minutes;
+            SecondDurationNumeric.Value = _movieSelected.Duration.Seconds;
         }
 
         private bool AddMovie()
@@ -124,8 +124,8 @@ namespace VideoClub.WPF.Views
             movie.Title = TitleText.Text.RemoveMultipleSpace().ToUpperAllFirstLetter();
             movie.Price = Convert.ToDecimal(PriceNumeric.Value);
             movie.QuantityDisc = Convert.ToInt32(QuantityNumeric.Value);
-            movie.ProductionYear = Convert.ToInt32(ProductionYearNumeric.Value);
-            movie.BuyYear = Convert.ToInt32(BuyYearNumeric.Value);
+            movie.ProductionYear = Convert.ToInt32(ProductionYearText.Text);
+            movie.BuyYear = Convert.ToInt32(BuyYearText.Text);
             var durationTimeSpan = new TimeSpan(
                 Convert.ToInt32(HourDurationNumeric.Value),
                 Convert.ToInt32(MinuteDurationNumeric.Value),
@@ -174,6 +174,12 @@ namespace VideoClub.WPF.Views
                 await LoadDataGrid();
             }
             HelperWindow.ClearFields(MainPanel);
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            var value = ((TextBox)sender).Text;
+            e.Handled = !int.TryParse(value + e.Text, out _);
         }
     }
 }
